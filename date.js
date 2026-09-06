@@ -63,25 +63,25 @@ const ALLIANCE_DATA = {
     {
       id: 1,
 
-      league: "A",
+      league: "Friendly-Match",
 
       time:
-        "2026-09-06T20:00:00+09:00",
+        "2026-09-13T11:00:00+09:00",
 
       home:
-        "NEXUS",
+        "AHBA",
 
       away:
-        "ORBIT",
+        "BTBL",
 
       homeScore:
-        5,
+        null,
 
       awayScore:
-        3,
+        null,
 
       status:
-        "finished",
+        "upcoming",
 
       round:
         "第1節"
