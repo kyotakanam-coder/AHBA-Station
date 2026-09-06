@@ -156,38 +156,25 @@ updateClock();
 
 function populate() {
 
-  const options =
-    D.leagues
-      .map(
-        league =>
+  const options = D.leagues
+    .map(league => `
+      <option value="${league.id}">
+        ${league.name}
+      </option>
+    `)
+    .join("");
 
-        `<option value="${league.id}">
-          ${league.name}
-        </option>`
-      )
-      .join("");
+  $("#leagueFilter").innerHTML = `
+    <option value="all">すべてのリーグ</option>
+    ${options}
+  `;
 
-
-  $("#leagueFilter")
-    .insertAdjacentHTML(
-      "beforeend",
-      options
-    );
-
-
-  $("#standingsLeague")
-    .innerHTML =
-    options;
-
+  $("#standingsLeague").innerHTML = options;
 
   renderGames();
-
   renderStandings("A");
-
   renderSchedule();
-
   renderLeagues();
-
   renderNextGame();
 }
 
@@ -541,8 +528,7 @@ function renderStandings(
 
 function renderSchedule() {
 
-  const games =
-
+ const games =
     [...D.games]
       .sort(
         (a,b) =>
@@ -552,14 +538,11 @@ function renderSchedule() {
 
 
   $("#scheduleList").innerHTML =
-
-    games
-      .map(game => `
-
+  games.length
+    ? games.map(game => `
         <div class="schedule-item">
 
           <div>
-
             <div class="sched-time">
               ${fmtTime(game.time)}
             </div>
@@ -567,57 +550,35 @@ function renderSchedule() {
             <div class="sched-date">
               ${fmtDate(game.time)}
             </div>
-
           </div>
 
-
           <div>
-
             <div class="sched-league">
               ${leagueName(game.league)}
             </div>
 
             <div class="sched-match">
-
               ${game.home}
-
-              <span class="dash">
-                vs
-              </span>
-
+              <span class="dash">vs</span>
               ${game.away}
-
             </div>
-
           </div>
 
-
           <div class="sched-status">
-
             ${
-              game.status ===
-              "finished"
-
-              ? "終了"
-
-              : "予定"
+              game.status === "finished"
+                ? "終了"
+                : "予定"
             }
-
             <br>
-
             ${zoneNames[currentZone]}
-
           </div>
 
         </div>
+      `).join("")
+    : "<p>試合予定がありません。</p>";
 
-      `)
-
-      .join("");
-
-
-  $("#zoneLabel").textContent =
-    currentZone;
+$("#zoneLabel").textContent = currentZone;
 }
 
 
