@@ -1219,50 +1219,45 @@ function renderSchedule() {
 ================================================== */
 
 function renderLeagues() {
+  const lang = currentLang;
 
   $("#leagueCards").innerHTML =
-
     D.leagues
-      .map(league => `
+      .map(league => {
+        const country =
+          typeof league.country === "object"
+            ? league.country[lang] || league.country.en
+            : league.country;
 
-        <a
-          href="league.html?id=${encodeURIComponent(league.id)}"
-          class="league-card league-link"
-        >
+        const description =
+          typeof league.description === "object"
+            ? league.description[lang] || league.description.en
+            : league.description;
 
-          <div class="league-code">
-            ${league.id}
-          </div>
+        return `
+          <a
+            href="league.html?id=${encodeURIComponent(league.id)}"
+            class="league-card league-link"
+          >
+            <div class="league-code">${league.id}</div>
 
-          <h3>
-            ${league.name}
-          </h3>
+            <h3>${league.name}</h3>
 
-          <p>
-            ${league.country}
-            <br>
-            ${league.description}
-          </p>
+            <p>
+              ${country}
+              <br>
+              ${description}
+            </p>
 
-          <div class="league-view">
-
-            <span>
-              ${t("leagues.view")}
-            </span>
-
-            <span>
-              →
-            </span>
-
-          </div>
-
-        </a>
-
-      `)
+            <div class="league-view">
+              <span>${t("leagues.view")}</span>
+              <span>→</span>
+            </div>
+          </a>
+        `;
+      })
       .join("");
-
 }
-
 
 /* ==================================================
    LANGUAGE BUTTONS
