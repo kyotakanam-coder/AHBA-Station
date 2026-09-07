@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+
+  <title>League | Asia HCBB Baseball Alliance</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Orbitron:wght@500;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="brand">
+
+    <span>
+      ASIA HCBB
+    </span>
+
+    <strong>
+      BASEBALL ALLIANCE
+    </strong>
+
+  </div>
+
+
+  <nav>
+
+    <a href="index.html#games">
+      試合
+    </a>
+
+    <a href="index.html#standings">
+      順位表
+    </a>
+
+    <a href="index.html#schedule">
+      時間表
+    </a>
+
+    <a href="index.html#leagues">
+      リーグ紹介
+    </a>
+
+  </nav>
+
+
+  <div class="language-switcher">
+
+    <button data-lang="ja" class="active">
+      🇯🇵
+    </button>
+
+    <button data-lang="ko">
+      🇰🇷
+    </button>
+
+    <button data-lang="en">
+      🇺🇸
+    </button>
+
+    <button data-lang="zh">
+      🇨🇳
+    </button>
+
+  </div>
+
+
+  <div class="clock">
+
+    <b id="clock">
+      --:--:--
+    </b>
+
+    <span id="tz">
+      日本
+    </span>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<section class="league-hero">
+
+  <div
+    class="eyebrow"
+    id="leagueCountry"
+  >
+    ASIA
+  </div>
+
+
+  <div
+    class="league-hero-code"
+    id="leagueCode"
+  >
+    A
+  </div>
+
+
+  <h1 id="leagueName">
+    A LEAGUE
+  </h1>
+
+
+  <p id="leagueDescription">
+    Asia HCBBのメイン競技リーグ。
+  </p>
+
+</section>
+
+
+<section class="section">
+
+  <div class="eyebrow">
+    LEAGUE INFORMATION
+  </div>
+
+  <h2>
+    League Information
+  </h2>
+
+
+  <div class="league-info-grid">
+
+
+    <div class="info-card">
+
+      <span>
+        OWNER
+      </span>
+
+      <strong id="leagueOwner">
+        -
+      </strong>
+
+    </div>
+
+
+    <div class="info-card">
+
+      <span>
+        REGION
+      </span>
+
+      <strong id="leagueRegion">
+        -
+      </strong>
+
+    </div>
+
+
+    <div class="info-card">
+
+      <span>
+        MATCH TIME
+      </span>
+
+      <strong id="leagueTime">
+        -
+      </strong>
+
+    </div>
+
+
+    <div class="info-card">
+
+      <span>
+        TEAMS
+      </span>
+
+      <strong id="leagueTeamCount">
+        -
+      </strong>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="eyebrow">
+    PARTICIPATING TEAMS
+  </div>
+
+  <h2>
+    Teams
+  </h2>
+
+
+  <div
+    id="leagueTeams"
+    class="team-list"
+  ></div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="eyebrow">
+    ABOUT THE LEAGUE
+  </div>
+
+  <h2>
+    About
+  </h2>
+
+
+  <div
+    id="leagueAbout"
+    class="about-card"
+  ></div>
+
+</section>
+
+
+<section class="section">
+
+  <a
+    href="index.html#leagues"
+    class="btn"
+  >
+    ← リーグ紹介へ戻る
+  </a>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <div>
+
+    <b>
+      ASIA HCBB BASEBALL ALLIANCE
+    </b>
+
+    <br>
+
+    Community・Competition・Connection
+
+  </div>
+
+
+  <div>
+    © 2026 Asia HCBB Baseball Alliance
+  </div>
+
+</footer>
+
+
+<script src="./data.js"></script>
+
+
+<script>
+
+const D = ALLIANCE_DATA;
+
+
+const params =
+  new URLSearchParams(
+    location.search
+  );
+
+
+const leagueId =
+  params.get("id");
+
+
+const league =
+  D.leagues.find(
+    x => x.id === leagueId
+  );
+
+
+if (!league) {
+
+  document.querySelector("main").innerHTML = `
+
+    <section class="section">
+
+      <h1>
+        League Not Found
+      </h1>
+
+      <a
+        href="index.html#leagues"
+        class="btn"
+      >
+        Back to League Introduction
+      </a>
+
+    </section>
+
+  `;
+
+} else {
+
+
+  document.title =
+    `${league.name} | Asia HCBB Baseball Alliance`;
+
+
+  document.querySelector("#leagueCountry")
+    .textContent =
+    league.country;
+
+
+  document.querySelector("#leagueCode")
+    .textContent =
+    league.id;
+
+
+  document.querySelector("#leagueName")
+    .textContent =
+    league.name;
+
+
+  document.querySelector("#leagueDescription")
+    .textContent =
+    league.description;
+
+
+  document.querySelector("#leagueOwner")
+    .textContent =
+    league.owner;
+
+
+  document.querySelector("#leagueRegion")
+    .textContent =
+    league.region;
+
+
+  document.querySelector("#leagueTime")
+    .textContent =
+    league.matchTime;
+
+
+  document.querySelector("#leagueTeamCount")
+    .textContent =
+    league.teams.length;
+
+
+  document.querySelector("#leagueTeams")
+    .innerHTML =
+
+    league.teams
+      .map(team => `
+
+        <div class="team-item">
+
+          <span>
+            ${team}
+          </span>
+
+          <span>
+            →
+          </span>
+
+        </div>
+
+      `)
+      .join("");
+
+
+  document.querySelector("#leagueAbout")
+    .textContent =
+    league.description;
+
+}
+
+
+/* CLOCK */
+
+function updateClock() {
+
+  document.querySelector("#clock")
+    .textContent =
+
+    new Intl.DateTimeFormat(
+      "ja-JP",
+      {
+        timeZone: "Asia/Tokyo",
+
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+
+        hour12: false
+      }
+    ).format(
+      new Date()
+    );
+
+}
+
+
+setInterval(
+  updateClock,
+  1000
+);
+
+updateClock();
+
+</script>
+
+
+</body>
+
+</html>
