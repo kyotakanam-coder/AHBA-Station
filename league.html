@@ -1,96 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>League | Asia HCBB Baseball Alliance</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Orbitron:wght@500;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <link rel="stylesheet" href="./style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-
 <header class="site-header">
 
-  <div class="brand">
+  <div class="header-inner">
 
-    <span>
-      ASIA HCBB
-    </span>
-
-    <strong>
-      BASEBALL ALLIANCE
-    </strong>
-
-  </div>
-
-
-  <nav>
-
-    <a href="index.html#games">
-      試合
+    <a href="index.html" class="brand">
+      <span class="brand-main">ASIA HCBB</span>
+      <span class="brand-sub">BASEBALL ALLIANCE</span>
     </a>
 
-    <a href="index.html#standings">
-      順位表
-    </a>
+    <nav class="main-nav">
+      <a href="index.html" data-i18n="nav.home">ホーム</a>
+      <a href="index.html#matches" data-i18n="nav.matches">試合情報</a>
+      <a href="index.html#standings" data-i18n="nav.standings">順位表</a>
+      <a href="index.html#schedule" data-i18n="nav.schedule">日程</a>
+      <a href="index.html#leagues" data-i18n="nav.leagues">リーグ紹介</a>
+    </nav>
 
-    <a href="index.html#schedule">
-      時間表
-    </a>
-
-    <a href="index.html#leagues">
-      リーグ紹介
-    </a>
-
-  </nav>
-
-
-  <div class="language-switcher">
-
-    <button data-lang="ja" class="active">
-      🇯🇵
-    </button>
-
-    <button data-lang="ko">
-      🇰🇷
-    </button>
-
-    <button data-lang="en">
-      🇺🇸
-    </button>
-
-    <button data-lang="zh">
-      🇨🇳
-    </button>
-
-  </div>
-
-
-  <div class="clock">
-
-    <b id="clock">
-      --:--:--
-    </b>
-
-    <span id="tz">
-      日本
-    </span>
+    <div class="language-switcher">
+      <button data-lang="ja">JP</button>
+      <button data-lang="ko">KR</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="zh">中文</button>
+    </div>
 
   </div>
 
@@ -99,337 +42,750 @@
 
 <main>
 
-<section class="league-hero">
+  <section class="league-hero">
 
-  <div
-    class="eyebrow"
-    id="leagueCountry"
-  >
-    ASIA
-  </div>
+    <div class="league-hero-inner">
 
+      <a
+        href="index.html#leagues"
+        class="back-link"
+        data-i18n="league.back"
+      >
+        ← リーグ紹介へ戻る
+      </a>
 
-  <div
-    class="league-hero-code"
-    id="leagueCode"
-  >
-    A
-  </div>
+      <div class="league-hero-code" id="leagueCode">
+        --
+      </div>
 
+      <div class="eyebrow" data-i18n="league.eyebrow">
+        LEAGUE
+      </div>
 
-  <h1 id="leagueName">
-    A LEAGUE
-  </h1>
+      <h1 id="leagueName">
+        --
+      </h1>
 
+      <p id="leagueDescription">
+        --
+      </p>
 
-  <p id="leagueDescription">
-    Asia HCBBのメイン競技リーグ。
-  </p>
+    </div>
 
-</section>
-
-
-<section class="section">
-
-  <div class="eyebrow">
-    LEAGUE INFORMATION
-  </div>
-
-  <h2>
-    League Information
-  </h2>
+  </section>
 
 
-  <div class="league-info-grid">
+  <section class="section">
 
+    <div class="section-header">
 
-    <div class="info-card">
+      <div>
+        <div class="eyebrow" data-i18n="league.overviewEyebrow">
+          LEAGUE OVERVIEW
+        </div>
 
-      <span>
-        OWNER
-      </span>
-
-      <strong id="leagueOwner">
-        -
-      </strong>
+        <h2 data-i18n="league.overview">
+          リーグ概要
+        </h2>
+      </div>
 
     </div>
 
 
-    <div class="info-card">
+    <div class="league-info-grid">
 
-      <span>
-        REGION
-      </span>
+      <div class="info-card">
 
-      <strong id="leagueRegion">
-        -
-      </strong>
+        <span data-i18n="league.owner">
+          運営
+        </span>
+
+        <strong id="leagueOwner">
+          --
+        </strong>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <span data-i18n="league.region">
+          地域
+        </span>
+
+        <strong id="leagueRegion">
+          --
+        </strong>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <span data-i18n="league.matchTime">
+          基本試合時間
+        </span>
+
+        <strong id="leagueMatchTime">
+          --
+        </strong>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <span data-i18n="league.teamCount">
+          参加チーム数
+        </span>
+
+        <strong id="leagueTeamCount">
+          --
+        </strong>
+
+      </div>
 
     </div>
 
-
-    <div class="info-card">
-
-      <span>
-        MATCH TIME
-      </span>
-
-      <strong id="leagueTime">
-        -
-      </strong>
-
-    </div>
+  </section>
 
 
-    <div class="info-card">
+  <section class="section">
 
-      <span>
-        TEAMS
-      </span>
+    <div class="section-header">
 
-      <strong id="leagueTeamCount">
-        -
-      </strong>
+      <div>
+        <div class="eyebrow" data-i18n="league.teamsEyebrow">
+          PARTICIPATING TEAMS
+        </div>
+
+        <h2 data-i18n="league.teams">
+          参加チーム
+        </h2>
+      </div>
 
     </div>
 
+    <div id="teamList" class="team-list"></div>
 
-  </div>
-
-</section>
-
-
-<section class="section">
-
-  <div class="eyebrow">
-    PARTICIPATING TEAMS
-  </div>
-
-  <h2>
-    Teams
-  </h2>
+  </section>
 
 
-  <div
-    id="leagueTeams"
-    class="team-list"
-  ></div>
+  <section class="section">
 
-</section>
+    <div class="section-header">
 
+      <div>
+        <div class="eyebrow" data-i18n="league.gamesEyebrow">
+          LEAGUE GAMES
+        </div>
 
-<section class="section">
+        <h2 data-i18n="league.games">
+          このリーグの試合
+        </h2>
+      </div>
 
-  <div class="eyebrow">
-    ABOUT THE LEAGUE
-  </div>
+    </div>
 
-  <h2>
-    About
-  </h2>
+    <div id="leagueGames" class="games-list"></div>
 
-
-  <div
-    id="leagueAbout"
-    class="about-card"
-  ></div>
-
-</section>
+  </section>
 
 
-<section class="section">
+  <section class="section">
 
-  <a
-    href="index.html#leagues"
-    class="btn"
-  >
-    ← リーグ紹介へ戻る
-  </a>
+    <div class="about-card">
 
-</section>
+      <div class="eyebrow" data-i18n="league.aboutEyebrow">
+        ABOUT THIS LEAGUE
+      </div>
+
+      <h2 data-i18n="league.aboutTitle">
+        このリーグについて
+      </h2>
+
+      <p id="leagueAbout">
+        --
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="section league-not-found" id="notFound" hidden>
+
+    <div class="about-card">
+
+      <h2 data-i18n="league.notFound">
+        リーグが見つかりません
+      </h2>
+
+      <p data-i18n="league.notFoundDescription">
+        指定されたリーグは存在しません。
+      </p>
+
+      <a
+        href="index.html#leagues"
+        class="primary-button"
+        data-i18n="league.return"
+      >
+        リーグ紹介へ戻る
+      </a>
+
+    </div>
+
+  </section>
 
 </main>
 
 
-<footer>
+<footer class="site-footer">
 
   <div>
-
-    <b>
-      ASIA HCBB BASEBALL ALLIANCE
-    </b>
-
-    <br>
-
-    Community・Competition・Connection
-
+    <strong>ASIA HCBB BASEBALL ALLIANCE</strong>
   </div>
 
-
-  <div>
-    © 2026 Asia HCBB Baseball Alliance
+  <div data-i18n="footer.rights">
+    All Rights Reserved.
   </div>
 
 </footer>
 
 
-<script src="./data.js"></script>
-
+<script src="data.js"></script>
 
 <script>
 
 const D = ALLIANCE_DATA;
 
+const translations = {
 
-const params =
-  new URLSearchParams(
-    location.search
+  ja: {
+
+    nav: {
+      home: "ホーム",
+      matches: "試合情報",
+      standings: "順位表",
+      schedule: "日程",
+      leagues: "リーグ紹介"
+    },
+
+    league: {
+      back: "← リーグ紹介へ戻る",
+      eyebrow: "LEAGUE",
+      overviewEyebrow: "LEAGUE OVERVIEW",
+      overview: "リーグ概要",
+
+      owner: "運営",
+      region: "地域",
+      matchTime: "基本試合時間",
+      teamCount: "参加チーム数",
+
+      teamsEyebrow: "PARTICIPATING TEAMS",
+      teams: "参加チーム",
+
+      gamesEyebrow: "LEAGUE GAMES",
+      games: "このリーグの試合",
+
+      aboutEyebrow: "ABOUT THIS LEAGUE",
+      aboutTitle: "このリーグについて",
+
+      noGames: "現在予定されている試合はありません",
+
+      notFound: "リーグが見つかりません",
+      notFoundDescription: "指定されたリーグは存在しません。",
+      return: "リーグ紹介へ戻る",
+
+      teamsUnit: "チーム"
+    },
+
+    footer: {
+      rights: "All Rights Reserved."
+    }
+
+  },
+
+
+  ko: {
+
+    nav: {
+      home: "홈",
+      matches: "경기 정보",
+      standings: "순위표",
+      schedule: "일정",
+      leagues: "리그 소개"
+    },
+
+    league: {
+      back: "← 리그 소개로 돌아가기",
+      eyebrow: "LEAGUE",
+      overviewEyebrow: "LEAGUE OVERVIEW",
+      overview: "리그 개요",
+
+      owner: "운영",
+      region: "지역",
+      matchTime: "기본 경기 시간",
+      teamCount: "참가 팀 수",
+
+      teamsEyebrow: "PARTICIPATING TEAMS",
+      teams: "참가 팀",
+
+      gamesEyebrow: "LEAGUE GAMES",
+      games: "이 리그의 경기",
+
+      aboutEyebrow: "ABOUT THIS LEAGUE",
+      aboutTitle: "이 리그에 대해",
+
+      noGames: "현재 예정된 경기가 없습니다",
+
+      notFound: "리그를 찾을 수 없습니다",
+      notFoundDescription: "지정된 리그가 존재하지 않습니다.",
+      return: "리그 소개로 돌아가기",
+
+      teamsUnit: "팀"
+    },
+
+    footer: {
+      rights: "All Rights Reserved."
+    }
+
+  },
+
+
+  en: {
+
+    nav: {
+      home: "HOME",
+      matches: "MATCHES",
+      standings: "STANDINGS",
+      schedule: "SCHEDULE",
+      leagues: "LEAGUES"
+    },
+
+    league: {
+      back: "← BACK TO LEAGUES",
+      eyebrow: "LEAGUE",
+      overviewEyebrow: "LEAGUE OVERVIEW",
+      overview: "League Overview",
+
+      owner: "Owner",
+      region: "Region",
+      matchTime: "Regular Match Time",
+      teamCount: "Teams",
+
+      teamsEyebrow: "PARTICIPATING TEAMS",
+      teams: "Participating Teams",
+
+      gamesEyebrow: "LEAGUE GAMES",
+      games: "League Games",
+
+      aboutEyebrow: "ABOUT THIS LEAGUE",
+      aboutTitle: "About This League",
+
+      noGames: "There are currently no scheduled games.",
+
+      notFound: "League Not Found",
+      notFoundDescription: "The requested league does not exist.",
+      return: "BACK TO LEAGUES",
+
+      teamsUnit: "teams"
+    },
+
+    footer: {
+      rights: "All Rights Reserved."
+    }
+
+  },
+
+
+  zh: {
+
+    nav: {
+      home: "首页",
+      matches: "比赛信息",
+      standings: "积分榜",
+      schedule: "赛程",
+      leagues: "联赛介绍"
+    },
+
+    league: {
+      back: "← 返回联赛介绍",
+      eyebrow: "LEAGUE",
+      overviewEyebrow: "LEAGUE OVERVIEW",
+      overview: "联赛概况",
+
+      owner: "运营",
+      region: "地区",
+      matchTime: "常规比赛时间",
+      teamCount: "参赛球队数",
+
+      teamsEyebrow: "PARTICIPATING TEAMS",
+      teams: "参赛球队",
+
+      gamesEyebrow: "LEAGUE GAMES",
+      games: "本联赛比赛",
+
+      aboutEyebrow: "ABOUT THIS LEAGUE",
+      aboutTitle: "关于本联赛",
+
+      noGames: "目前没有安排中的比赛",
+
+      notFound: "未找到联赛",
+      notFoundDescription: "指定的联赛不存在。",
+      return: "返回联赛介绍",
+
+      teamsUnit: "支球队"
+    },
+
+    footer: {
+      rights: "All Rights Reserved."
+    }
+
+  }
+
+};
+
+
+let currentLang =
+  localStorage.getItem("asiaHCBBLanguage") || "ja";
+
+
+function t(key) {
+
+  const parts = key.split(".");
+
+  let value = translations[currentLang];
+
+  for (const part of parts) {
+
+    if (value && value[part] !== undefined) {
+      value = value[part];
+    } else {
+      return key;
+    }
+
+  }
+
+  return value;
+}
+
+
+function applyLanguage() {
+
+  document.documentElement.lang = currentLang;
+
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach(el => {
+
+      const key = el.dataset.i18n;
+
+      el.textContent = t(key);
+
+    });
+
+
+  document
+    .querySelectorAll("[data-lang]")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.lang === currentLang
+      );
+
+    });
+
+
+  renderLeague();
+
+}
+
+
+function getLeague() {
+
+  const params = new URLSearchParams(
+    window.location.search
   );
 
+  const id = params.get("id");
 
-const leagueId =
-  params.get("id");
-
-
-const league =
-  D.leagues.find(
-    x => x.id === leagueId
+  return D.leagues.find(
+    league => league.id === id
   );
 
+}
 
-if (!league) {
 
-  document.querySelector("main").innerHTML = `
+function getLocalized(value) {
 
-    <section class="section">
+  if (
+    value &&
+    typeof value === "object"
+  ) {
 
-      <h1>
-        League Not Found
-      </h1>
+    return (
+      value[currentLang] ||
+      value.en ||
+      value.ja ||
+      ""
+    );
 
-      <a
-        href="index.html#leagues"
-        class="btn"
-      >
-        Back to League Introduction
-      </a>
+  }
 
-    </section>
+  return value || "";
 
-  `;
+}
 
-} else {
+
+function renderLeague() {
+
+  const league = getLeague();
+
+  if (!league) {
+
+    document
+      .querySelector(".league-hero")
+      .setAttribute("hidden", "");
+
+    document
+      .querySelectorAll(".section")
+      .forEach(section => {
+        section.setAttribute("hidden", "");
+      });
+
+    document
+      .getElementById("notFound")
+      .removeAttribute("hidden");
+
+    return;
+
+  }
+
+
+  document
+    .getElementById("notFound")
+    .setAttribute("hidden", "");
+
+
+  document
+    .querySelector(".league-hero")
+    .removeAttribute("hidden");
 
 
   document.title =
     `${league.name} | Asia HCBB Baseball Alliance`;
 
 
-  document.querySelector("#leagueCountry")
+  document
+    .getElementById("leagueCode")
+    .textContent = league.id;
+
+
+  document
+    .getElementById("leagueName")
+    .textContent = league.name;
+
+
+  document
+    .getElementById("leagueDescription")
     .textContent =
-    league.country;
+      getLocalized(league.description);
 
 
-  document.querySelector("#leagueCode")
+  document
+    .getElementById("leagueOwner")
     .textContent =
-    league.id;
+      league.owner || "-";
 
 
-  document.querySelector("#leagueName")
+  document
+    .getElementById("leagueRegion")
     .textContent =
-    league.name;
+      getLocalized(league.region);
 
 
-  document.querySelector("#leagueDescription")
+  document
+    .getElementById("leagueMatchTime")
     .textContent =
-    league.description;
+      league.matchTime || "-";
 
 
-  document.querySelector("#leagueOwner")
+  document
+    .getElementById("leagueTeamCount")
     .textContent =
-    league.owner;
+      `${league.teams.length} ${t("league.teamsUnit")}`;
 
 
-  document.querySelector("#leagueRegion")
+  document
+    .getElementById("leagueAbout")
     .textContent =
-    league.region;
+      getLocalized(league.description);
 
 
-  document.querySelector("#leagueTime")
-    .textContent =
-    league.matchTime;
+  renderTeams(league);
+
+  renderGames(league);
+
+}
 
 
-  document.querySelector("#leagueTeamCount")
-    .textContent =
-    league.teams.length;
+function renderTeams(league) {
+
+  const container =
+    document.getElementById("teamList");
 
 
-  document.querySelector("#leagueTeams")
-    .innerHTML =
-
+  container.innerHTML =
     league.teams
-      .map(team => `
-
+      .map((team, index) => `
         <div class="team-item">
 
-          <span>
-            ${team}
+          <span class="team-number">
+            ${String(index + 1).padStart(2, "0")}
           </span>
 
-          <span>
-            →
-          </span>
+          <strong>
+            ${team}
+          </strong>
 
         </div>
-
       `)
       .join("");
 
-
-  document.querySelector("#leagueAbout")
-    .textContent =
-    league.description;
-
 }
 
 
-/* CLOCK */
+function renderGames(league) {
 
-function updateClock() {
+  const container =
+    document.getElementById("leagueGames");
 
-  document.querySelector("#clock")
-    .textContent =
 
-    new Intl.DateTimeFormat(
-      "ja-JP",
-      {
-        timeZone: "Asia/Tokyo",
-
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-
-        hour12: false
-      }
-    ).format(
-      new Date()
+  const games =
+    D.games.filter(
+      game => game.league === league.id
     );
 
+
+  if (!games.length) {
+
+    container.innerHTML = `
+      <div class="about-card">
+        ${t("league.noGames")}
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    games
+      .map(game => {
+
+        const date =
+          new Date(game.time);
+
+
+        const dateText =
+          new Intl.DateTimeFormat(
+            currentLang === "ja"
+              ? "ja-JP"
+              : currentLang === "ko"
+              ? "ko-KR"
+              : currentLang === "zh"
+              ? "zh-CN"
+              : "en-US",
+            {
+              month: "numeric",
+              day: "numeric",
+              weekday: "short",
+              hour: "2-digit",
+              minute: "2-digit"
+            }
+          ).format(date);
+
+
+        let score = "-";
+
+
+        if (
+          game.homeScore !== null &&
+          game.awayScore !== null
+        ) {
+
+          score =
+            `${game.homeScore} - ${game.awayScore}`;
+
+        }
+
+
+        return `
+          <div class="game-card">
+
+            <div class="game-date">
+              ${dateText}
+            </div>
+
+            <div class="game-teams">
+
+              <strong>
+                ${game.home}
+              </strong>
+
+              <span class="game-score">
+                ${score}
+              </span>
+
+              <strong>
+                ${game.away}
+              </strong>
+
+            </div>
+
+            <div class="game-round">
+              ${game.round || ""}
+            </div>
+
+          </div>
+        `;
+
+      })
+      .join("");
+
 }
 
 
-setInterval(
-  updateClock,
-  1000
-);
+document
+  .querySelectorAll("[data-lang]")
+  .forEach(button => {
 
-updateClock();
+    button.addEventListener(
+      "click",
+      () => {
+
+        currentLang =
+          button.dataset.lang;
+
+        localStorage.setItem(
+          "asiaHCBBLanguage",
+          currentLang
+        );
+
+        applyLanguage();
+
+      }
+    );
+
+  });
+
+
+applyLanguage();
 
 </script>
 
-
 </body>
-
 </html>
