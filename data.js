@@ -24,31 +24,83 @@ const ALLIANCE_DATA = {
 
   leagues: [
 
-    {
-      id: "A",
-      name: "A LEAGUE",
-      country: "ASIA",
-      description:
-        "Asia HCBBのメイン競技リーグ。"
-    },
+  {
+    id: "A",
+    name: "A LEAGUE",
+    country: "ASIA",
 
-    {
-      id: "B",
-      name: "B LEAGUE",
-      country: "ASIA",
-      description:
-        "新規・発展チームを中心としたリーグ。"
-    },
+    description:
+      "Asia HCBBのメイン競技リーグ。",
 
-    {
-      id: "KOREA",
-      name: "KOREA LEAGUE",
-      country: "🇰🇷 KOREA",
-      description:
-        "韓国コミュニティを中心としたサイドリーグ。"
-    }
+    owner:
+      "Owner Name",
 
-  ],
+    region:
+      "Asia",
+
+    matchTime:
+      "20:00 JST",
+
+    teams: [
+      "NEXUS",
+      "ORBIT",
+      "VORTEX",
+      "LYNX"
+    ]
+
+  },
+
+
+  {
+    id: "B",
+    name: "B LEAGUE",
+    country: "ASIA",
+
+    description:
+      "新規・発展チームを中心としたリーグ。",
+
+    owner:
+      "Owner Name",
+
+    region:
+      "Asia",
+
+    matchTime:
+      "21:30 JST",
+
+    teams: [
+      "AURORA",
+      "METEOR"
+    ]
+
+  },
+
+
+  {
+    id: "KOREA",
+    name: "KOREA LEAGUE",
+    country: "🇰🇷 KOREA",
+
+    description:
+      "韓国コミュニティを中心としたサイドリーグ。",
+
+    owner:
+      "Owner Name",
+
+    region:
+      "Korea",
+
+    matchTime:
+      "21:00 KST",
+
+    teams: [
+      "SEOUL",
+      "BUSAN"
+    ]
+
+  }
+
+],
 
 
 
