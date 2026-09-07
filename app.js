@@ -52,10 +52,10 @@ const translations = {
     },
 
     leagues: {
-  eyebrow: "LEAGUE INTRODUCTION",
-  title: "リーグ紹介",
-  view: "リーグページを見る"
-},
+      eyebrow: "LEAGUE INTRODUCTION",
+　　   title: "リーグ紹介",
+      view: "リーグページを見る"
+    },
 
     filter: {
       allLeagues: "全リーグ",
@@ -138,10 +138,10 @@ const translations = {
     },
 
     leagues: {
-  eyebrow: "LEAGUE INTRODUCTION",
-  title: "리그 소개",
-  view: "리그 페이지 보기"
-},
+      eyebrow: "LEAGUE INTRODUCTION",
+      title: "리그 소개",
+      view: "리그 페이지 보기"
+    },
 
     filter: {
       allLeagues: "전체 리그",
@@ -224,10 +224,10 @@ const translations = {
     },
 
     leagues: {
-  eyebrow: "LEAGUE INTRODUCTION",
-  title: "League Introduction",
-  view: "VIEW LEAGUE"
-},
+      eyebrow: "LEAGUE INTRODUCTION",
+      title: "League Introduction",
+      view: "VIEW LEAGUE"
+    },
 
     filter: {
       allLeagues: "All Leagues",
@@ -309,11 +309,11 @@ const translations = {
       timezone: "显示时区："
     },
 
-leagues: {
-  eyebrow: "LEAGUE INTRODUCTION",
-  title: "联赛介绍",
-  view: "查看联赛页面"
-},
+    leagues: {
+      eyebrow: "LEAGUE INTRODUCTION",
+      title: "联赛介绍",
+      view: "查看联赛页面"
+    },
 
     filter: {
       allLeagues: "所有联赛",
