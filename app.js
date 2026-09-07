@@ -52,9 +52,10 @@ const translations = {
     },
 
     leagues: {
-      eyebrow: "ALLIANCE NETWORK",
-      title: "参加リーグ"
-    },
+  eyebrow: "LEAGUE INTRODUCTION",
+  title: "リーグ紹介",
+  view: "リーグページを見る"
+},
 
     filter: {
       allLeagues: "全リーグ",
@@ -137,9 +138,10 @@ const translations = {
     },
 
     leagues: {
-      eyebrow: "ALLIANCE NETWORK",
-      title: "참가 리그"
-    },
+  eyebrow: "LEAGUE INTRODUCTION",
+  title: "리그 소개",
+  view: "리그 페이지 보기"
+},
 
     filter: {
       allLeagues: "전체 리그",
@@ -222,9 +224,10 @@ const translations = {
     },
 
     leagues: {
-      eyebrow: "ALLIANCE NETWORK",
-      title: "Participating Leagues"
-    },
+  eyebrow: "LEAGUE INTRODUCTION",
+  title: "League Introduction",
+  view: "VIEW LEAGUE"
+},
 
     filter: {
       allLeagues: "All Leagues",
@@ -306,10 +309,11 @@ const translations = {
       timezone: "显示时区："
     },
 
-    leagues: {
-      eyebrow: "ALLIANCE NETWORK",
-      title: "参赛联赛"
-    },
+leagues: {
+  eyebrow: "LEAGUE INTRODUCTION",
+  title: "联赛介绍",
+  view: "查看联赛页面"
+},
 
     filter: {
       allLeagues: "所有联赛",
@@ -1219,33 +1223,42 @@ function renderLeagues() {
   $("#leagueCards").innerHTML =
 
     D.leagues
-      .map(
-        league => `
+      .map(league => `
 
-          <article class="league-card">
+        <a
+          href="league.html?id=${encodeURIComponent(league.id)}"
+          class="league-card league-link"
+        >
 
-            <div class="league-code">
-              ${league.id}
-            </div>
+          <div class="league-code">
+            ${league.id}
+          </div>
 
-            <h3>
-              ${league.name}
-            </h3>
+          <h3>
+            ${league.name}
+          </h3>
 
-            <p>
+          <p>
+            ${league.country}
+            <br>
+            ${league.description}
+          </p>
 
-              ${league.country}
+          <div class="league-view">
 
-              <br>
+            <span>
+              ${t("leagues.view")}
+            </span>
 
-              ${league.description}
+            <span>
+              →
+            </span>
 
-            </p>
+          </div>
 
-          </article>
+        </a>
 
-        `
-      )
+      `)
       .join("");
 
 }
