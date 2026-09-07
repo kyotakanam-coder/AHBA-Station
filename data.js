@@ -23,83 +23,83 @@ const ALLIANCE_DATA = {
   */
 
   leagues: [
-
   {
     id: "A",
     name: "A LEAGUE",
-    country: "ASIA",
-
-    description:
-      "Asia HCBBのメイン競技リーグ。",
-
-    owner:
-      "Owner Name",
-
-    region:
-      "Asia",
-
-    matchTime:
-      "20:00 JST",
-
-    teams: [
-      "NEXUS",
-      "ORBIT",
-      "VORTEX",
-      "LYNX"
-    ]
-
+    country: {
+      ja: "ASIA",
+      ko: "ASIA",
+      en: "ASIA",
+      zh: "ASIA"
+    },
+    description: {
+      ja: "Asia HCBBのメイン競技リーグ。",
+      ko: "Asia HCBB의 메인 경쟁 리그입니다.",
+      en: "The main competitive league of Asia HCBB.",
+      zh: "Asia HCBB的主要竞技联赛。"
+    },
+    owner: "Owner Name",
+    region: {
+      ja: "アジア",
+      ko: "아시아",
+      en: "Asia",
+      zh: "亚洲"
+    },
+    matchTime: "20:00 JST",
+    teams: ["NEXUS", "ORBIT", "VORTEX", "LYNX"]
   },
-
 
   {
     id: "B",
     name: "B LEAGUE",
-    country: "ASIA",
-
-    description:
-      "新規・発展チームを中心としたリーグ。",
-
-    owner:
-      "Owner Name",
-
-    region:
-      "Asia",
-
-    matchTime:
-      "21:30 JST",
-
-    teams: [
-      "AURORA",
-      "METEOR"
-    ]
-
+    country: {
+      ja: "ASIA",
+      ko: "ASIA",
+      en: "ASIA",
+      zh: "ASIA"
+    },
+    description: {
+      ja: "新規・発展チームを中心としたリーグ。",
+      ko: "신규 및 성장 팀을 중심으로 한 리그입니다.",
+      en: "A league focused on new and developing teams.",
+      zh: "以新建及发展中球队为中心的联赛。"
+    },
+    owner: "Owner Name",
+    region: {
+      ja: "アジア",
+      ko: "아시아",
+      en: "Asia",
+      zh: "亚洲"
+    },
+    matchTime: "21:30 JST",
+    teams: ["AURORA", "METEOR"]
   },
-
 
   {
     id: "KOREA",
     name: "KOREA LEAGUE",
-    country: "🇰🇷 KOREA",
-
-    description:
-      "韓国コミュニティを中心としたサイドリーグ。",
-
-    owner:
-      "Owner Name",
-
-    region:
-      "Korea",
-
-    matchTime:
-      "21:00 KST",
-
-    teams: [
-      "SEOUL",
-      "BUSAN"
-    ]
-
+    country: {
+      ja: "🇰🇷 KOREA",
+      ko: "🇰🇷 KOREA",
+      en: "🇰🇷 KOREA",
+      zh: "🇰🇷 KOREA"
+    },
+    description: {
+      ja: "韓国コミュニティを中心としたサイドリーグ。",
+      ko: "한국 커뮤니티를 중심으로 운영되는 사이드 리그입니다.",
+      en: "A side league centered around the Korean community.",
+      zh: "以韩国社区为中心运营的支线联赛。"
+    },
+    owner: "Owner Name",
+    region: {
+      ja: "韓国",
+      ko: "한국",
+      en: "Korea",
+      zh: "韩国"
+    },
+    matchTime: "21:00 KST",
+    teams: ["SEOUL", "BUSAN"]
   }
-
 ],
 
 
