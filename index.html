@@ -1,50 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <title>Asia HCBB Baseball Alliance</title>
-
-  <meta
-    name="description"
-    content="Asia HCBB Baseball Alliance — 試合結果・順位表・試合時間・リーグ日程"
-  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Orbitron:wght@500;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Orbitron:wght@500;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-<header class="topbar">
+<header class="site-header">
 
   <div class="brand">
-    <div class="brand-mark">A</div>
-
-    <div>
-      <div class="brand-title">ASIA HCBB</div>
-      <div class="brand-sub">BASEBALL ALLIANCE</div>
-    </div>
+    <span>ASIA HCBB</span>
+    <strong>BASEBALL ALLIANCE</strong>
   </div>
 
   <nav>
-    <a href="#games">試合</a>
-    <a href="#standings">順位表</a>
-    <a href="#schedule">時間表</a>
-    <a href="#leagues">リーグ</a>
+    <a href="#games" data-i18n="nav.games">試合</a>
+    <a href="#standings" data-i18n="nav.standings">順位表</a>
+    <a href="#schedule" data-i18n="nav.schedule">時間表</a>
+    <a href="#leagues" data-i18n="nav.leagues">リーグ</a>
+    <a href="admin.html" data-i18n="nav.admin">管理</a>
   </nav>
 
+  <!-- 言語切替 -->
+  <div class="language-switcher">
+
+    <button data-lang="ja" class="active">
+      🇯🇵
+    </button>
+
+    <button data-lang="ko">
+      🇰🇷
+    </button>
+
+    <button data-lang="en">
+      🇺🇸
+    </button>
+
+    <button data-lang="zh">
+      🇨🇳
+    </button>
+
+  </div>
+
   <div class="clock">
-    <span id="clock">--:--:--</span>
-    <small id="tz">JST</small>
+
+    <b id="clock">
+      --:--:--
+    </b>
+
+    <span id="tz">
+      日本
+    </span>
+
   </div>
 
 </header>
@@ -52,56 +72,72 @@
 
 <main>
 
+<!-- HERO -->
+
 <section class="hero">
 
-  <div>
-
-    <div class="eyebrow">
-      ASIA HCBB BASEBALL ALLIANCE
-    </div>
-
-    <h1>
-      アジアのHCBBを、<br>
-      <span>ひとつのスコアボードへ。</span>
-    </h1>
-
-    <p>
-      試合結果、順位、各リーグの試合時間を
-      ひとつのサイトで確認できる
-      Asia HCBB Baseball Alliance公式ポータル。
-    </p>
-
-    <div class="hero-actions">
-      <a class="btn primary" href="#games">
-        試合を見る
-      </a>
-
-      <a class="btn ghost" href="#schedule">
-        週間時間表
-      </a>
-    </div>
-
+  <div class="eyebrow">
+    ASIA HCBB BASEBALL ALLIANCE
   </div>
 
+  <h1 data-i18n-html="hero.title">
+    アジアのHCBBを、<br>
+    <span>ひとつのスコアボードへ。</span>
+  </h1>
 
-  <div class="hero-panel">
+  <p data-i18n="hero.description">
+    試合結果、順位、各リーグの試合時間をひとつのサイトで確認できる
+    Asia HCBB Baseball Alliance 公式ポータル。
+  </p>
 
-    <div class="panel-label">
-      NEXT GAME
-    </div>
+  <div class="hero-actions">
 
-    <div id="nextGame" class="next-game"></div>
+    <a
+      class="btn primary"
+      href="#games"
+      data-i18n="hero.games"
+    >
+      試合を見る
+    </a>
+
+    <a
+      class="btn"
+      href="#schedule"
+      data-i18n="hero.schedule"
+    >
+      時間表
+    </a>
 
   </div>
 
 </section>
 
 
+<!-- NEXT GAME -->
+
+<section class="next-card">
+
+  <div
+    class="section-mini"
+    data-i18n="next.title"
+  >
+    NEXT GAME
+  </div>
+
+  <div id="nextGame"></div>
+
+</section>
+
+
+<!-- TICKER -->
+
 <div class="ticker">
 
   <span class="live-dot"></span>
 
-  <b>ALLIANCE LIVE</b>
+  <b>
+    ALLIANCE LIVE
+  </b>
 
   <span id="tickerText">
     データを読み込んでいます…
@@ -117,35 +153,46 @@
   <div class="section-head">
 
     <div>
-      <div class="eyebrow">
+
+      <div
+        class="eyebrow"
+        data-i18n="games.eyebrow"
+      >
         MATCH CENTER
       </div>
 
-      <h2>
+      <h2 data-i18n="games.title">
         試合結果・予定
       </h2>
+
     </div>
 
 
     <div class="filters">
 
       <select id="leagueFilter">
-        <option value="all">
-          全リーグ
-        </option>
       </select>
 
       <select id="statusFilter">
 
-        <option value="all">
+        <option
+          value="all"
+          data-i18n="filter.all"
+        >
           全試合
         </option>
 
-        <option value="upcoming">
+        <option
+          value="upcoming"
+          data-i18n="filter.upcoming"
+        >
           予定
         </option>
 
-        <option value="finished">
+        <option
+          value="finished"
+          data-i18n="filter.finished"
+        >
           終了
         </option>
 
@@ -161,7 +208,6 @@
 </section>
 
 
-
 <!-- STANDINGS -->
 
 <section id="standings" class="section">
@@ -170,11 +216,14 @@
 
     <div>
 
-      <div class="eyebrow">
+      <div
+        class="eyebrow"
+        data-i18n="standings.eyebrow"
+      >
         STANDINGS
       </div>
 
-      <h2>
+      <h2 data-i18n="standings.title">
         順位表
       </h2>
 
@@ -192,15 +241,27 @@
       <thead>
 
         <tr>
+
           <th>#</th>
-          <th>TEAM</th>
+
+          <th data-i18n="table.team">
+            TEAM
+          </th>
+
           <th>G</th>
+
           <th>W</th>
+
           <th>L</th>
+
           <th>PCT</th>
+
           <th>RS</th>
+
           <th>RA</th>
+
           <th>DIFF</th>
+
         </tr>
 
       </thead>
@@ -214,8 +275,7 @@
 </section>
 
 
-
-<!-- TIME TABLE -->
+<!-- SCHEDULE -->
 
 <section id="schedule" class="section">
 
@@ -223,26 +283,30 @@
 
     <div>
 
-      <div class="eyebrow">
+      <div
+        class="eyebrow"
+        data-i18n="schedule.eyebrow"
+      >
         TIME TABLE
       </div>
 
-      <h2>
+      <h2 data-i18n="schedule.title">
         リーグ時間表
       </h2>
 
     </div>
 
+    <span class="zone-readout">
 
-    <div class="timezone-box">
-
-      表示タイムゾーン：
+      <span data-i18n="schedule.timezone">
+        表示タイムゾーン：
+      </span>
 
       <b id="zoneLabel">
         Asia/Tokyo
       </b>
 
-    </div>
+    </span>
 
   </div>
 
@@ -250,22 +314,22 @@
   <div class="timezone-tabs">
 
     <button
-      data-zone="Asia/Tokyo"
       class="active"
+      data-zone="Asia/Tokyo"
     >
-      🇯🇵 日本
+      🇯🇵 <span data-i18n="country.japan">日本</span>
     </button>
 
     <button data-zone="Asia/Seoul">
-      🇰🇷 韓国
+      🇰🇷 <span data-i18n="country.korea">韓国</span>
     </button>
 
     <button data-zone="Asia/Taipei">
-      🇹🇼 台湾
+      🇹🇼 <span data-i18n="country.taiwan">台湾</span>
     </button>
 
     <button data-zone="Asia/Shanghai">
-      🇨🇳 中国
+      🇨🇳 <span data-i18n="country.china">中国</span>
     </button>
 
   </div>
@@ -276,26 +340,26 @@
 </section>
 
 
-
 <!-- LEAGUES -->
 
-<section id="leagues" class="section league-section">
+<section id="leagues" class="section">
 
-  <div class="eyebrow">
+  <div
+    class="eyebrow"
+    data-i18n="leagues.eyebrow"
+  >
     ALLIANCE NETWORK
   </div>
 
-  <h2>
+  <h2 data-i18n="leagues.title">
     参加リーグ
   </h2>
-
 
   <div id="leagueCards" class="league-cards"></div>
 
 </section>
 
 </main>
-
 
 
 <footer>
@@ -308,22 +372,21 @@
 
     <br>
 
-    <span>
-      Community • Competition • Connection
+    <span data-i18n="footer.subtitle">
+      Community・Competition・Connection
     </span>
 
   </div>
 
-
-  <div class="footer-right">
+  <div>
     © 2026 Asia HCBB Baseball Alliance
   </div>
 
 </footer>
 
 
-<script src="data.js"></script>
-<script src="app.js"></script>
+<script src="./data.js"></script>
+<script src="./app.js"></script>
 
 </body>
 </html>
