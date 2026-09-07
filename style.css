@@ -1115,3 +1115,314 @@ footer {
   }
 
 }
+
+/* ========================================
+   LEAGUE PAGE
+======================================== */
+
+.league-link {
+  display: block;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  position: relative;
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease;
+}
+
+.league-link:hover {
+  transform:
+    translateY(-5px);
+
+  border-color:
+    var(--accent);
+}
+
+
+.league-view {
+
+  margin-top: 24px;
+
+  padding-top: 14px;
+
+  border-top:
+    1px solid var(--line);
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  color:
+    var(--accent);
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing:
+    .08em;
+}
+
+
+/* ========================================
+   LEAGUE HERO
+======================================== */
+
+.league-hero {
+
+  padding:
+    100px 5vw
+    70px;
+
+  max-width:
+    1200px;
+
+  margin:
+    0 auto;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.league-hero-code {
+
+  font-family:
+    "Orbitron",
+    sans-serif;
+
+  font-size:
+    clamp(80px,15vw,180px);
+
+  font-weight:
+    800;
+
+  line-height:
+    .8;
+
+  opacity:
+    .08;
+
+  position: absolute;
+
+  right: 5%;
+
+  top: 50px;
+}
+
+.league-hero h1 {
+
+  font-family:
+    "Orbitron",
+    "Noto Sans JP",
+    sans-serif;
+
+  font-size:
+    clamp(38px,6vw,76px);
+
+  margin:
+    18px 0;
+
+}
+
+.league-hero p {
+
+  color:
+    var(--muted);
+
+  max-width:
+    700px;
+
+  line-height:
+    1.8;
+
+}
+
+
+/* ========================================
+   INFORMATION
+======================================== */
+
+.league-info-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:
+    16px;
+
+}
+
+.info-card {
+
+  background:
+    var(--panel);
+
+  border:
+    1px solid var(--line);
+
+  border-radius:
+    14px;
+
+  padding:
+    24px;
+
+}
+
+.info-card span {
+
+  display:
+    block;
+
+  color:
+    var(--muted);
+
+  font-size:
+    11px;
+
+  letter-spacing:
+    .12em;
+
+  margin-bottom:
+    12px;
+
+}
+
+.info-card strong {
+
+  font-size:
+    18px;
+
+}
+
+
+/* ========================================
+   TEAMS
+======================================== */
+
+.team-list {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:
+    12px;
+
+}
+
+.team-item {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  padding:
+    20px 22px;
+
+  background:
+    var(--panel);
+
+  border:
+    1px solid var(--line);
+
+  border-radius:
+    10px;
+
+  font-weight:
+    700;
+
+}
+
+.team-item span:last-child {
+
+  color:
+    var(--accent);
+
+}
+
+
+/* ========================================
+   ABOUT
+======================================== */
+
+.about-card {
+
+  background:
+    var(--panel);
+
+  border:
+    1px solid var(--line);
+
+  border-radius:
+    14px;
+
+  padding:
+    30px;
+
+  line-height:
+    1.9;
+
+  color:
+    var(--muted);
+
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width:900px) {
+
+  .league-info-grid {
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+}
+
+
+@media (max-width:600px) {
+
+  .league-hero {
+
+    padding:
+      70px 20px
+      50px;
+
+  }
+
+  .league-info-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+  .team-list {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+}
