@@ -1221,7 +1221,7 @@ function renderSchedule() {
 ================================================== */
 
 function renderLeagues() {
-  const lang = currentLang;
+  const lang = currentLanguage;
 
   $("#leagueCards").innerHTML =
     D.leagues
