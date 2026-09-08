@@ -457,6 +457,8 @@ function applyLanguage(lang) {
 
   renderNextGame();
 
+  renderLeagues();
+
 }
 
 
