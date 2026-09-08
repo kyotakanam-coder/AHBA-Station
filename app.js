@@ -1215,17 +1215,24 @@ function renderSchedule() {
 
 }
 
-
 /* ==================================================
    LEAGUES
 ================================================== */
 
 function renderLeagues() {
+
   const lang = currentLanguage;
 
   $("#leagueCards").innerHTML =
+
     D.leagues
       .map(league => {
+
+        const name =
+          typeof league.name === "object"
+            ? league.name[lang] || league.name.en || league.name.ja
+            : league.name;
+
         const country =
           typeof league.country === "object"
             ? league.country[lang] || league.country.en
@@ -1241,9 +1248,14 @@ function renderLeagues() {
             href="league.html?id=${encodeURIComponent(league.id)}"
             class="league-card league-link"
           >
-            <div class="league-code">${league.id}</div>
 
-            <h3>${league.name}</h3>
+            <div class="league-code">
+              ${league.id}
+            </div>
+
+            <h3>
+              ${name}
+            </h3>
 
             <p>
               ${country}
@@ -1252,13 +1264,21 @@ function renderLeagues() {
             </p>
 
             <div class="league-view">
-              <span>${t("leagues.view")}</span>
+
+              <span>
+                ${t("leagues.view")}
+              </span>
+
               <span>→</span>
+
             </div>
+
           </a>
         `;
+
       })
       .join("");
+
 }
 
 /* ==================================================
@@ -1358,9 +1378,9 @@ $$(".timezone-tabs button")
    START
 ================================================== */
 
-updateFilterTexts();
+updateClock();
 
-renderLeagues();
+updateFilterTexts();
 
 renderGames();
 
@@ -1370,6 +1390,6 @@ renderSchedule();
 
 renderNextGame();
 
-applyLanguage(
-  currentLanguage
-);
+renderLeagues();
+
+applyLanguage(currentLanguage);
