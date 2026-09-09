@@ -578,7 +578,7 @@ const zoneNames = {
     zh: "台湾"
   },
 
-  "Asia/Shanghai": {
+  "America/New_York": {
     ja: "ニューヨーク",
     ko: "뉴욕",
     en: "New York",
