@@ -72,7 +72,7 @@ const translations = {
       japan: "日本",
       korea: "韓国",
       taiwan: "台湾",
-      china: "中国"
+      newYork: "ニューヨーク"
     },
 
     game: {
@@ -158,7 +158,7 @@ const translations = {
       japan: "일본",
       korea: "한국",
       taiwan: "대만",
-      china: "중국"
+      newYork: "뉴욕"
     },
 
     game: {
@@ -244,7 +244,7 @@ const translations = {
       japan: "Japan",
       korea: "Korea",
       taiwan: "Taiwan",
-      china: "China"
+      newYork: "New York"
     },
 
     game: {
@@ -330,7 +330,7 @@ const translations = {
       japan: "日本",
       korea: "韩国",
       taiwan: "台湾",
-      china: "中国"
+      newYork: "纽约"
     },
 
     game: {
@@ -579,10 +579,10 @@ const zoneNames = {
   },
 
   "Asia/Shanghai": {
-    ja: "中国",
-    ko: "중국",
-    en: "China",
-    zh: "中国"
+    ja: "ニューヨーク",
+    ko: "뉴욕",
+    en: "New York",
+    zh: "纽约"
   }
 
 };
