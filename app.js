@@ -459,6 +459,8 @@ function applyLanguage(lang) {
 
   renderLeagues();
 
+  updateClock();
+
 }
 
 
@@ -551,8 +553,7 @@ function leagueName(id) {
    TIME
 ================================================== */
 
-let currentZone =
-  "Asia/Tokyo";
+let currentZone = "Asia/Tokyo";
 
 
 const zoneNames = {
@@ -646,32 +647,41 @@ function fmtTime(
 
 function updateClock() {
 
+  const zone =
+    zoneNames[currentZone]
+      ? currentZone
+      : "Asia/Tokyo";
+
+
+  const name =
+    zoneNames[zone]?.[currentLanguage]
+    || zoneNames[zone]?.ja
+    || zone;
+
+
   $("#clock").textContent =
 
     new Intl.DateTimeFormat(
-      "ja-JP",
+      currentLanguage === "ja"
+        ? "ja-JP"
+        : currentLanguage === "ko"
+          ? "ko-KR"
+          : currentLanguage === "zh"
+            ? "zh-CN"
+            : "en-US",
       {
-        timeZone: currentZone,
+        timeZone: zone,
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
         hour12: false
       }
-    ).format(
-      new Date()
-    );
+    ).format(new Date());
 
 
-  $("#tz").textContent =
-    zoneNames[currentZone][currentLanguage];
+  $("#tz").textContent = name;
 
 }
-
-
-setInterval(
-  updateClock,
-  1000
-);
 
 
 /* ==================================================
@@ -1340,36 +1350,49 @@ $("#standingsLeague")
 $$(".timezone-tabs button")
   .forEach(button => {
 
-    button.addEventListener(
-      "click",
-      () => {
+    button.addEventListener("click", () => {
 
-        $$(".timezone-tabs button")
-          .forEach(
-            x =>
-              x.classList.remove(
-                "active"
-              )
+      const selectedZone =
+        button.dataset.zone;
+
+
+      // 不正なタイムゾーンは無視
+      if (
+        !zoneNames[selectedZone]
+      ) {
+        return;
+      }
+
+
+      // 現在のタイムゾーンを更新
+      currentZone =
+        selectedZone;
+
+
+      // 選択状態を更新
+      $$(".timezone-tabs button")
+        .forEach(btn => {
+
+          btn.classList.toggle(
+            "active",
+            btn.dataset.zone === currentZone
           );
 
-
-        button.classList.add(
-          "active"
-        );
+        });
 
 
-        currentZone =
-          button.dataset.zone;
+      // 時計を即時更新
+      updateClock();
 
 
-        updateClock();
+      // 時間表を即時更新
+      renderSchedule();
 
-        renderSchedule();
 
-        renderNextGame();
+      // NEXT GAMEも即時更新
+      renderNextGame();
 
-      }
-    );
+    });
 
   });
 
