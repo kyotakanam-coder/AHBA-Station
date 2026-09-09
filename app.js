@@ -53,12 +53,12 @@ const translations = {
 
     leagues: {
       eyebrow: "LEAGUE INTRODUCTION",
-　　   title: "リーグ紹介",
+      title: "リーグ紹介",
       view: "リーグページを見る"
     },
 
     filter: {
-      allLeagues: "全リーグ",
+      allLeagues: "全試合",
       all: "全試合",
       upcoming: "予定",
       finished: "終了"
@@ -80,7 +80,18 @@ const translations = {
       upcoming: "UPCOMING",
       finished: "試合終了",
       scheduled: "試合予定",
+      international: "国際試合",
+      friendly: "親善試合",
+      tournament: "大会",
+      ahba: "AHBA主催",
       noGames: "該当する試合がありません。"
+    },
+
+    gameType: {
+      international: "国際試合",
+      friendly: "親善試合",
+      tournament: "大会",
+      ahba: "AHBA主催"
     },
 
     scheduleStatus: {
@@ -144,7 +155,7 @@ const translations = {
     },
 
     filter: {
-      allLeagues: "전체 리그",
+      allLeagues: "전체 경기",
       all: "전체 경기",
       upcoming: "예정",
       finished: "종료"
@@ -166,7 +177,18 @@ const translations = {
       upcoming: "UPCOMING",
       finished: "경기 종료",
       scheduled: "경기 예정",
+      international: "국제 경기",
+      friendly: "친선 경기",
+      tournament: "대회",
+      ahba: "AHBA 주최",
       noGames: "해당 경기가 없습니다."
+    },
+
+    gameType: {
+      international: "국제 경기",
+      friendly: "친선 경기",
+      tournament: "대회",
+      ahba: "AHBA 주최"
     },
 
     scheduleStatus: {
@@ -230,7 +252,7 @@ const translations = {
     },
 
     filter: {
-      allLeagues: "All Leagues",
+      allLeagues: "All Games",
       all: "All Games",
       upcoming: "Upcoming",
       finished: "Finished"
@@ -252,7 +274,18 @@ const translations = {
       upcoming: "UPCOMING",
       finished: "Final",
       scheduled: "Scheduled",
+      international: "International",
+      friendly: "Friendly",
+      tournament: "Tournament",
+      ahba: "AHBA Hosted",
       noGames: "No games found."
+    },
+
+    gameType: {
+      international: "International",
+      friendly: "Friendly",
+      tournament: "Tournament",
+      ahba: "AHBA Hosted"
     },
 
     scheduleStatus: {
@@ -316,7 +349,7 @@ const translations = {
     },
 
     filter: {
-      allLeagues: "所有联赛",
+      allLeagues: "所有比赛",
       all: "所有比赛",
       upcoming: "即将进行",
       finished: "已结束"
@@ -338,7 +371,18 @@ const translations = {
       upcoming: "UPCOMING",
       finished: "比赛结束",
       scheduled: "比赛 예정",
+      international: "国际比赛",
+      friendly: "友谊赛",
+      tournament: "赛事",
+      ahba: "AHBA主办",
       noGames: "暂无比赛。"
+    },
+
+    gameType: {
+      international: "国际比赛",
+      friendly: "友谊赛",
+      tournament: "赛事",
+      ahba: "AHBA主办"
     },
 
     scheduleStatus: {
@@ -369,17 +413,13 @@ let currentLanguage =
 
 function t(path) {
 
-  const parts =
-    path.split(".");
+  const parts = path.split(".");
 
   let value =
     translations[currentLanguage];
 
   for (const part of parts) {
-
-    value =
-      value?.[part];
-
+    value = value?.[part];
   }
 
   return value || path;
@@ -449,9 +489,7 @@ function applyLanguage(lang) {
 
   renderGames();
 
-  renderStandings(
-    $("#standingsLeague").value || "A"
-  );
+  renderStandings();
 
   renderSchedule();
 
@@ -470,63 +508,69 @@ function applyLanguage(lang) {
 
 function updateFilterTexts() {
 
-  $("#leagueFilter").innerHTML =
-
-    `<option value="all">
-      ${t("filter.allLeagues")}
-    </option>` +
-
-    D.leagues
-      .map(league => `
-        <option value="${league.id}">
-          ${league.name}
-        </option>
-      `)
-      .join("");
-
-
   const currentStatus =
-    $("#statusFilter").value || "all";
+    $("#statusFilter")?.value || "all";
 
 
-  $("#statusFilter").innerHTML = `
+  /*
+   * ホームページの試合一覧は
+   * 「全リーグのリーグ戦一覧」ではなく、
+   * AHBAが公式掲載する試合だけを表示する。
+   *
+   * そのためリーグ選択フィルターは使用しない。
+   */
 
-    <option value="all">
-      ${t("filter.all")}
-    </option>
+  if ($("#leagueFilter")) {
 
-    <option value="upcoming">
-      ${t("filter.upcoming")}
-    </option>
+    $("#leagueFilter").innerHTML = `
+      <option value="all">
+        ${t("filter.all")}
+      </option>
+    `;
 
-    <option value="finished">
-      ${t("filter.finished")}
-    </option>
-
-  `;
-
-
-  $("#statusFilter").value =
-    currentStatus;
-
-
-  const currentLeague =
-    $("#standingsLeague").value || "A";
+    $("#leagueFilter").value = "all";
+  }
 
 
-  $("#standingsLeague").innerHTML =
+  if ($("#statusFilter")) {
 
-    D.leagues
-      .map(league => `
-        <option value="${league.id}">
-          ${league.name}
-        </option>
-      `)
-      .join("");
+    $("#statusFilter").innerHTML = `
+      <option value="all">
+        ${t("filter.all")}
+      </option>
+
+      <option value="upcoming">
+        ${t("filter.upcoming")}
+      </option>
+
+      <option value="finished">
+        ${t("filter.finished")}
+      </option>
+    `;
+
+    $("#statusFilter").value =
+      currentStatus;
+  }
 
 
-  $("#standingsLeague").value =
-    currentLeague;
+  /*
+   * ホームの順位表も
+   * D.standings.current の公式掲載データを使用。
+   *
+   * D.gamesからリーグ順位を自動生成しない。
+   */
+
+  if ($("#standingsLeague")) {
+
+    $("#standingsLeague").innerHTML = `
+      <option value="ahba">
+        ${t("nav.standings")}
+      </option>
+    `;
+
+    $("#standingsLeague").value =
+      "ahba";
+  }
 
 }
 
@@ -538,13 +582,85 @@ function updateFilterTexts() {
 function leagueName(id) {
 
   const league =
-    D.leagues.find(
+    D.leagues?.find(
       x => x.id === id
     );
 
-  return league
-    ? league.name
-    : id;
+  if (!league) {
+    return id || "";
+  }
+
+  return typeof league.name === "object"
+
+    ? league.name[currentLanguage]
+      || league.name.en
+      || league.name.ja
+      || league.id
+
+    : league.name;
+}
+
+
+/* ==================================================
+   GAME LABEL
+================================================== */
+
+function gameLabel(game) {
+
+  /*
+   * title が設定されている場合
+   * 例：
+   * title: {
+   *   ja: "日本代表 vs 韓国代表",
+   *   ko: "...",
+   *   en: "...",
+   *   zh: "..."
+   * }
+   */
+
+  if (game.title) {
+
+    if (
+      typeof game.title === "object"
+    ) {
+
+      return (
+        game.title[currentLanguage]
+        || game.title.en
+        || game.title.ja
+        || ""
+      );
+
+    }
+
+    return game.title;
+  }
+
+
+  /*
+   * 既存データに league が残っている場合
+   */
+
+  if (game.league) {
+    return leagueName(game.league);
+  }
+
+
+  /*
+   * type による表示
+   */
+
+  if (game.type) {
+
+    return (
+      t(`gameType.${game.type}`)
+      || t("gameType.ahba")
+    );
+
+  }
+
+
+  return t("gameType.ahba");
 
 }
 
@@ -553,40 +669,68 @@ function leagueName(id) {
    TIME
 ================================================== */
 
-let currentZone = "Asia/Tokyo";
+let currentZone =
+  "Asia/Tokyo";
 
 
 const zoneNames = {
 
   "Asia/Tokyo": {
+
     ja: "日本",
     ko: "일본",
     en: "Japan",
     zh: "日本"
+
   },
 
   "Asia/Seoul": {
+
     ja: "韓国",
     ko: "한국",
     en: "Korea",
     zh: "韩国"
+
   },
 
   "Asia/Taipei": {
+
     ja: "台湾",
     ko: "대만",
     en: "Taiwan",
     zh: "台湾"
+
   },
 
   "America/New_York": {
+
     ja: "ニューヨーク",
     ko: "뉴욕",
     en: "New York",
     zh: "纽约"
+
   }
 
 };
+
+
+function localeName() {
+
+  if (currentLanguage === "ja") {
+    return "ja-JP";
+  }
+
+  if (currentLanguage === "ko") {
+    return "ko-KR";
+  }
+
+  if (currentLanguage === "zh") {
+    return "zh-CN";
+  }
+
+  return "en-US";
+
+}
 
 
 function fmtDate(
@@ -594,14 +738,12 @@ function fmtDate(
   zone = currentZone
 ) {
 
+  if (!iso) {
+    return "—";
+  }
+
   return new Intl.DateTimeFormat(
-    currentLanguage === "ja"
-      ? "ja-JP"
-      : currentLanguage === "ko"
-        ? "ko-KR"
-        : currentLanguage === "zh"
-          ? "zh-CN"
-          : "en-US",
+    localeName(),
     {
       timeZone: zone,
       month: "numeric",
@@ -620,14 +762,12 @@ function fmtTime(
   zone = currentZone
 ) {
 
+  if (!iso) {
+    return "—";
+  }
+
   return new Intl.DateTimeFormat(
-    currentLanguage === "ja"
-      ? "ja-JP"
-      : currentLanguage === "ko"
-        ? "ko-KR"
-        : currentLanguage === "zh"
-          ? "zh-CN"
-          : "en-US",
+    localeName(),
     {
       timeZone: zone,
       hour: "2-digit",
@@ -659,27 +799,35 @@ function updateClock() {
     || zone;
 
 
-  $("#clock").textContent =
+  const clock =
+    $("#clock");
 
-    new Intl.DateTimeFormat(
-      currentLanguage === "ja"
-        ? "ja-JP"
-        : currentLanguage === "ko"
-          ? "ko-KR"
-          : currentLanguage === "zh"
-            ? "zh-CN"
-            : "en-US",
-      {
-        timeZone: zone,
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false
-      }
-    ).format(new Date());
+  if (clock) {
+
+    clock.textContent =
+
+      new Intl.DateTimeFormat(
+        localeName(),
+        {
+          timeZone: zone,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false
+        }
+      ).format(
+        new Date()
+      );
+
+  }
 
 
-  $("#tz").textContent = name;
+  const tz =
+    $("#tz");
+
+  if (tz) {
+    tz.textContent = name;
+  }
 
 }
 
@@ -690,15 +838,20 @@ function updateClock() {
 
 function renderNextGame() {
 
-  const game =
+  const games =
+    Array.isArray(D.games)
+      ? D.games
+      : [];
 
-    [...D.games]
+
+  const game =
+    [...games]
       .filter(
         g =>
           g.status === "upcoming"
       )
       .sort(
-        (a,b) =>
+        (a, b) =>
           new Date(a.time) -
           new Date(b.time)
       )[0];
@@ -706,59 +859,65 @@ function renderNextGame() {
 
   if (!game) {
 
-    $("#nextGame").innerHTML =
-      t("nextGame.none");
+    if ($("#nextGame")) {
+      $("#nextGame").innerHTML =
+        t("nextGame.none");
+    }
 
-    $("#tickerText").textContent =
-      t("nextGame.none");
+    if ($("#tickerText")) {
+      $("#tickerText").textContent =
+        t("nextGame.none");
+    }
 
     return;
+  }
+
+
+  const label =
+    gameLabel(game);
+
+
+  if ($("#nextGame")) {
+
+    $("#nextGame").innerHTML = `
+
+      <div class="next-time">
+        ${fmtTime(game.time)}
+      </div>
+
+      <div class="next-date">
+        ${fmtDate(game.time)}
+        ・
+        ${label}
+      </div>
+
+      <div class="matchup">
+
+        <div class="team">
+          ${game.home}
+        </div>
+
+        <div class="vs">
+          VS
+        </div>
+
+        <div class="team">
+          ${game.away}
+        </div>
+
+      </div>
+
+    `;
 
   }
 
 
-  $("#nextGame").innerHTML = `
+  if ($("#tickerText")) {
 
-    <div class="next-time">
-      ${fmtTime(game.time)}
-    </div>
+    $("#tickerText").textContent =
+      `${label} — ${game.home} vs ${game.away} / ${fmtDate(game.time)} ${fmtTime(game.time)}`;
 
-    <div class="next-date">
-
-      ${fmtDate(game.time)}
-      ・
-      ${leagueName(game.league)}
-
-    </div>
-
-    <div class="matchup">
-
-      <div class="team">
-        ${game.home}
-      </div>
-
-      <div class="vs">
-        VS
-      </div>
-
-      <div class="team">
-        ${game.away}
-      </div>
-
-    </div>
-
-  `;
-
-
-  $("#tickerText").textContent =
-
-    `${leagueName(game.league)}
-     — ${game.home}
-     vs
-     ${game.away}
-     /
-     ${fmtDate(game.time)}
-     ${fmtTime(game.time)}`;
+  }
 
 }
 
@@ -769,35 +928,30 @@ function renderNextGame() {
 
 function renderGames() {
 
-  const league =
-    $("#leagueFilter").value;
-
   const status =
-    $("#statusFilter").value;
+    $("#statusFilter")?.value
+    || "all";
 
+
+  /*
+   * 重要：
+   *
+   * ここでは D.games に入っている
+   * 「AHBA公式掲載試合」のみを表示。
+   *
+   * 各リーグの全試合を
+   * 自動表示することはしない。
+   */
 
   const games =
-
-    [...D.games]
-
-      .filter(game =>
-
-        (
-          league === "all" ||
-          game.league === league
-        )
-
-        &&
-
-        (
-          status === "all" ||
-          game.status === status
-        )
-
+    [...(D.games || [])]
+      .filter(
+        game =>
+          status === "all"
+          || game.status === status
       )
-
       .sort(
-        (a,b) =>
+        (a, b) =>
           new Date(a.time) -
           new Date(b.time)
       );
@@ -805,11 +959,19 @@ function renderGames() {
 
   if (!games.length) {
 
-    $("#gamesGrid").innerHTML =
-      `<p>${t("game.noGames")}</p>`;
+    if ($("#gamesGrid")) {
+
+      $("#gamesGrid").innerHTML =
+        `<p>${t("game.noGames")}</p>`;
+
+    }
 
     return;
+  }
 
+
+  if (!$("#gamesGrid")) {
+    return;
   }
 
 
@@ -824,16 +986,19 @@ function renderGames() {
 
             <span class="league-tag">
 
-              ${leagueName(game.league)}
-              ・
-              ${game.round}
+              ${gameLabel(game)}
+
+              ${
+                game.round
+                  ? `・${game.round}`
+                  : ""
+              }
 
             </span>
 
 
             <span
-              class="game-status
-              ${game.status}"
+              class="game-status ${game.status}"
             >
 
               ${
@@ -913,235 +1078,141 @@ function renderGames() {
    STANDINGS
 ================================================== */
 
-function buildStandings(
-  leagueId
-) {
+/*
+ * ホームページの順位表は
+ * D.standings.current をそのまま使用。
+ *
+ * D.games から自動的にリーグ順位を
+ * 計算する方式にはしない。
+ */
 
-  const teams = {};
+function buildStandings() {
 
-
-  D.games
-    .filter(
-      g =>
-        g.league === leagueId
-    )
-    .forEach(game => {
-
-      [
-        game.home,
-        game.away
-      ].forEach(team => {
-
-        if (!teams[team]) {
-
-          teams[team] = {
-
-            team,
-            g: 0,
-            w: 0,
-            l: 0,
-            rs: 0,
-            ra: 0
-
-          };
-
-        }
-
-      });
+  const standings =
+    D.standings?.current;
 
 
-      if (
-        game.status !== "finished" ||
-        game.homeScore == null ||
-        game.awayScore == null
-      ) {
-        return;
-      }
-
-
-      const home =
-        teams[game.home];
-
-      const away =
-        teams[game.away];
-
-
-      home.g++;
-      away.g++;
-
-
-      home.rs +=
-        game.homeScore;
-
-      home.ra +=
-        game.awayScore;
-
-
-      away.rs +=
-        game.awayScore;
-
-      away.ra +=
-        game.homeScore;
-
-
-      if (
-        game.homeScore >
-        game.awayScore
-      ) {
-
-        home.w++;
-        away.l++;
-
-      }
-
-      else if (
-        game.awayScore >
-        game.homeScore
-      ) {
-
-        away.w++;
-        home.l++;
-
-      }
-
-    });
-
-
-  return Object.values(teams)
-    .sort(
-      (a,b) => {
-
-        const ap =
-          a.g
-            ? a.w / a.g
-            : 0;
-
-        const bp =
-          b.g
-            ? b.w / b.g
-            : 0;
-
-        return (
-          bp - ap
-        )
-
-        ||
-
-        (
-          (b.rs - b.ra) -
-          (a.rs - a.ra)
-        )
-
-        ||
-
-        (
-          b.rs - a.rs
-        );
-
-      }
-    );
+  return Array.isArray(standings)
+    ? standings
+    : [];
 
 }
 
 
-function renderStandings(
-  leagueId
-) {
+function renderStandings() {
 
   const rows =
-    buildStandings(
-      leagueId
-    );
+    buildStandings();
+
+
+  if (!$("#standingsBody")) {
+    return;
+  }
 
 
   $("#standingsBody").innerHTML =
 
     rows.length
 
-      ? rows.map(
-          (row,index) => {
+      ? rows
+          .map(
+            (row, index) => {
 
-            const pct =
-              row.g
-                ? row.w / row.g
-                : 0;
-
-            const diff =
-              row.rs -
-              row.ra;
+              const pct =
+                row.g
+                  ? row.w / row.g
+                  : 0;
 
 
-            return `
+              const diff =
+                (row.rs ?? 0)
+                -
+                (row.ra ?? 0);
 
-              <tr>
 
-                <td>
-                  ${index + 1}
-                </td>
+              return `
 
-                <td>
-                  ${row.team}
-                </td>
+                <tr>
 
-                <td>
-                  ${row.g}
-                </td>
+                  <td>
+                    ${index + 1}
+                  </td>
 
-                <td>
-                  ${row.w}
-                </td>
+                  <td>
+                    ${row.team ?? "—"}
+                  </td>
 
-                <td>
-                  ${row.l}
-                </td>
+                  <td>
+                    ${row.g ?? 0}
+                  </td>
 
-                <td>
-                  ${
-                    row.g
-                      ? pct
-                          .toFixed(3)
-                          .replace(
-                            "0.",
-                            "."
-                          )
-                      : "—"
-                  }
-                </td>
+                  <td>
+                    ${row.w ?? 0}
+                  </td>
 
-                <td>
-                  ${row.rs}
-                </td>
+                  <td>
+                    ${row.l ?? 0}
+                  </td>
 
-                <td>
-                  ${row.ra}
-                </td>
+                  <td>
 
-                <td>
-                  ${
-                    diff > 0
-                      ? "+"
-                      : ""
-                  }${diff}
-                </td>
+                    ${
+                      row.g
 
-              </tr>
+                        ? pct
+                            .toFixed(3)
+                            .replace(
+                              "0.",
+                              "."
+                            )
 
-            `;
+                        : "—"
+                    }
 
-          }
-        ).join("")
+                  </td>
+
+                  <td>
+                    ${row.rs ?? 0}
+                  </td>
+
+                  <td>
+                    ${row.ra ?? 0}
+                  </td>
+
+                  <td>
+
+                    ${
+                      diff > 0
+                        ? "+"
+                        : ""
+                    }
+
+                    ${diff}
+
+                  </td>
+
+                </tr>
+
+              `;
+
+            }
+          )
+          .join("")
+
 
       : `
 
-        <tr>
+          <tr>
 
-          <td colspan="9">
-            ${t("game.noGames")}
-          </td>
+            <td colspan="9">
 
-        </tr>
+              ${t("game.noGames")}
 
-      `;
+            </td>
+
+          </tr>
+
+        `;
 
 }
 
@@ -1153,77 +1224,113 @@ function renderStandings(
 function renderSchedule() {
 
   const games =
-
-    [...D.games]
+    [...(D.games || [])]
       .sort(
-        (a,b) =>
+        (a, b) =>
           new Date(a.time) -
           new Date(b.time)
       );
 
 
-  $("#scheduleList").innerHTML =
+  if (!$("#scheduleList")) {
+    return;
+  }
 
-    games.map(
-      game => `
 
-        <div class="schedule-item">
+  if (!games.length) {
 
-          <div>
+    $("#scheduleList").innerHTML =
+      `<p>${t("game.noGames")}</p>`;
 
-            <div class="sched-time">
-              ${fmtTime(game.time)}
+  }
+
+  else {
+
+    $("#scheduleList").innerHTML =
+
+      games
+        .map(
+          game => `
+
+            <div class="schedule-item">
+
+
+              <div>
+
+                <div class="sched-time">
+                  ${fmtTime(game.time)}
+                </div>
+
+                <div class="sched-date">
+                  ${fmtDate(game.time)}
+                </div>
+
+              </div>
+
+
+              <div>
+
+                <div class="sched-league">
+                  ${gameLabel(game)}
+                </div>
+
+
+                <div class="sched-match">
+
+                  ${game.home}
+
+                  <span class="dash">
+                    vs
+                  </span>
+
+                  ${game.away}
+
+                </div>
+
+              </div>
+
+
+              <div class="sched-status">
+
+                ${
+                  game.status === "finished"
+
+                    ? t(
+                        "scheduleStatus.finished"
+                      )
+
+                    : t(
+                        "scheduleStatus.upcoming"
+                      )
+                }
+
+              </div>
+
+
             </div>
 
-            <div class="sched-date">
-              ${fmtDate(game.time)}
-            </div>
+          `
+        )
+        .join("");
 
-          </div>
-
-
-          <div>
-
-            <div class="sched-league">
-              ${leagueName(game.league)}
-            </div>
-
-            <div class="sched-match">
-
-              ${game.home}
-
-              <span class="dash">
-                vs
-              </span>
-
-              ${game.away}
-
-            </div>
-
-          </div>
+  }
 
 
-          <div class="sched-status">
+  if ($("#zoneLabel")) {
 
-            ${
-              game.status === "finished"
-                ? t("scheduleStatus.finished")
-                : t("scheduleStatus.upcoming")
-            }
-
-          </div>
-
-        </div>
-
-      `
-    )
-    .join("");
+    const zone =
+      zoneNames[currentZone];
 
 
-  $("#zoneLabel").textContent =
-    currentZone;
+    $("#zoneLabel").textContent =
+      zone?.[currentLanguage]
+      || zone?.ja
+      || currentZone;
+
+  }
 
 }
+
 
 /* ==================================================
    LEAGUES
@@ -1231,47 +1338,94 @@ function renderSchedule() {
 
 function renderLeagues() {
 
-  const lang = currentLanguage;
+  if (!$("#leagueCards")) {
+    return;
+  }
+
+
+  const lang =
+    currentLanguage;
+
+
+  const leagues =
+    Array.isArray(D.leagues)
+      ? D.leagues
+      : [];
+
 
   $("#leagueCards").innerHTML =
 
-    D.leagues
+    leagues
       .map(league => {
 
         const name =
+
           typeof league.name === "object"
-            ? league.name[lang] || league.name.en || league.name.ja
+
+            ? league.name[lang]
+              || league.name.en
+              || league.name.ja
+              || league.id
+
             : league.name;
 
+
         const country =
+
           typeof league.country === "object"
-            ? league.country[lang] || league.country.en
+
+            ? league.country[lang]
+              || league.country.en
+              || league.country.ja
+              || ""
+
             : league.country;
 
+
         const description =
+
           typeof league.description === "object"
-            ? league.description[lang] || league.description.en
+
+            ? league.description[lang]
+              || league.description.en
+              || league.description.ja
+              || ""
+
             : league.description;
 
+
         return `
+
           <a
-            href="league.html?id=${encodeURIComponent(league.id)}"
+
+            href="league.html?id=${encodeURIComponent(
+              league.id
+            )}"
+
             class="league-card league-link"
+
           >
 
             <div class="league-code">
               ${league.id}
             </div>
 
+
             <h3>
               ${name}
             </h3>
 
+
             <p>
+
               ${country}
+
               <br>
+
               ${description}
+
             </p>
+
 
             <div class="league-view">
 
@@ -1279,17 +1433,22 @@ function renderLeagues() {
                 ${t("leagues.view")}
               </span>
 
-              <span>→</span>
+              <span>
+                →
+              </span>
 
             </div>
 
+
           </a>
+
         `;
 
       })
       .join("");
 
 }
+
 
 /* ==================================================
    LANGUAGE BUTTONS
@@ -1317,29 +1476,23 @@ $$(".language-switcher button")
 ================================================== */
 
 $("#leagueFilter")
-  .addEventListener(
+  ?.addEventListener(
     "change",
     renderGames
   );
 
 
 $("#statusFilter")
-  .addEventListener(
+  ?.addEventListener(
     "change",
     renderGames
   );
 
 
 $("#standingsLeague")
-  .addEventListener(
+  ?.addEventListener(
     "change",
-    event => {
-
-      renderStandings(
-        event.target.value
-      );
-
-    }
+    renderStandings
   );
 
 
@@ -1350,51 +1503,83 @@ $("#standingsLeague")
 $$(".timezone-tabs button")
   .forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-      const selectedZone =
-        button.dataset.zone;
+        const selectedZone =
+          button.dataset.zone;
 
 
-      // 不正なタイムゾーンは無視
-      if (
-        !zoneNames[selectedZone]
-      ) {
-        return;
+        /*
+         * 不正なタイムゾーンは無視
+         */
+
+        if (
+          !zoneNames[selectedZone]
+        ) {
+          return;
+        }
+
+
+        /*
+         * 現在のタイムゾーンを変更
+         */
+
+        currentZone =
+          selectedZone;
+
+
+        /*
+         * 選択状態を更新
+         */
+
+        $$(".timezone-tabs button")
+          .forEach(btn => {
+
+            btn.classList.toggle(
+              "active",
+              btn.dataset.zone
+                === currentZone
+            );
+
+          });
+
+
+        /*
+         * 時計を更新
+         */
+
+        updateClock();
+
+
+        /*
+         * 時間表を更新
+         */
+
+        renderSchedule();
+
+
+        /*
+         * NEXT GAMEを更新
+         */
+
+        renderNextGame();
+
       }
-
-
-      // 現在のタイムゾーンを更新
-      currentZone =
-        selectedZone;
-
-
-      // 選択状態を更新
-      $$(".timezone-tabs button")
-        .forEach(btn => {
-
-          btn.classList.toggle(
-            "active",
-            btn.dataset.zone === currentZone
-          );
-
-        });
-
-
-      // 時計を即時更新
-      updateClock();
-
-
-      // 時間表を即時更新
-      renderSchedule();
-
-
-      // NEXT GAMEも即時更新
-      renderNextGame();
-
-    });
+    );
 
   });
+
+
+/* ==================================================
+   CLOCK AUTO UPDATE
+================================================== */
+
+setInterval(
+  updateClock,
+  1000
+);
 
 
 /* ==================================================
@@ -1407,7 +1592,7 @@ updateFilterTexts();
 
 renderGames();
 
-renderStandings("A");
+renderStandings();
 
 renderSchedule();
 
@@ -1415,4 +1600,6 @@ renderNextGame();
 
 renderLeagues();
 
-applyLanguage(currentLanguage);
+applyLanguage(
+  currentLanguage
+);
