@@ -5,8 +5,8 @@ const ALLIANCE_DATA = {
   // =========================
   leagues: [
     {
-      id: "A",
-      name: "A LEAGUE",
+      id: "WBL",
+      name: "WBL",
       country: {
         ja: "ASIA",
         ko: "ASIA",
