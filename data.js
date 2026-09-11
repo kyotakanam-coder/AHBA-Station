@@ -12,18 +12,18 @@ const ALLIANCE_DATA = {
   leagues: [
 
     {
-      id: "A",
+      id: "KBO",
       name: {
-        ja: "A LEAGUE",
-        ko: "A LEAGUE",
-        en: "A LEAGUE",
-        zh: "A LEAGUE"
+        ja: "KBO",
+        ko: "KBO",
+        en: "KBO",
+        zh: "KBO"
       },
       country: {
-        ja: "日本",
-        ko: "일본",
-        en: "Japan",
-        zh: "日本"
+        ja: "韓国",
+        ko: "대한민국",
+        en: "South Korea",
+        zh: "韩国"
       },
       description: {
         ja: "日本を中心としたHCBBリーグ。",
