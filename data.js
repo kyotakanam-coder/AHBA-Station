@@ -144,16 +144,6 @@ const ALLIANCE_DATA = {
 
       ],
 
-      notes: {
-        ja: "",
-        ko: "",
-        en: "",
-        zh: "",
-      }
-        
-    }
-  }
-
   ],
 
 
