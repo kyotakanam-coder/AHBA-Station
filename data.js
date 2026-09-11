@@ -108,7 +108,51 @@ const ALLIANCE_DATA = {
       awayScore: null,
 
       status: "upcoming"
+
+      round: "Friendly match"
+
+      detail: {
+
+        innings: {
+          home: [-, -, -, -, -, -, -, -, -],
+          away: [-, -, -, -, -, -, -, -, -]
+        },
+
+      pitching: {
+
+        win: ""
+
+        lose: ""
+
+        save: ""
+
+        holds: [
+          ""
+          ""
+        ]
+
+      },
+
+      homeRuns: [
+
+        {
+          team: "",
+          player: "",
+          inning: ,
+          runs:
+        },
+
+      ],
+
+      notes: {
+        ja: "",
+        ko: "",
+        en: "",
+        zh: "",
+      }
+        
     }
+  }
 
   ],
 
