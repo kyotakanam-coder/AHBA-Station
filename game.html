@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Game | Asia HCBB Baseball Alliance</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+
+  <!-- =========================================
+       HEADER
+       ========================================= -->
+
+  <header class="site-header">
+
+    <div class="header-inner">
+
+      <a href="index.html" class="brand">
+
+        <span class="brand-main">
+          ASIA HCBB
+        </span>
+
+        <span class="brand-sub">
+          BASEBALL ALLIANCE
+        </span>
+
+      </a>
+
+
+      <nav class="main-nav">
+
+        <a
+          href="index.html"
+          data-i18n="nav.home">
+          ホーム
+        </a>
+
+        <a
+          href="index.html#matches"
+          data-i18n="nav.matches">
+          試合情報
+        </a>
+
+        <a
+          href="index.html#standings"
+          data-i18n="nav.standings">
+          順位表
+        </a>
+
+        <a
+          href="index.html#schedule"
+          data-i18n="nav.schedule">
+          日程
+        </a>
+
+        <a
+          href="index.html#leagues"
+          data-i18n="nav.leagues">
+          リーグ紹介
+        </a>
+
+      </nav>
+
+
+      <div class="language-switcher">
+
+        <button data-lang="ja">
+          JP
+        </button>
+
+        <button data-lang="ko">
+          KR
+        </button>
+
+        <button data-lang="en">
+          EN
+        </button>
+
+        <button data-lang="zh">
+          中文
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       MAIN
+       ========================================= -->
+
+  <main>
+
+    <!-- =======================================
+         GAME HERO
+         ======================================= -->
+
+    <section class="game-hero">
+
+      <div class="game-hero-inner">
+
+        <a
+          href="index.html#matches"
+          class="back-link"
+          data-i18n="game.back">
+          ← 試合情報へ戻る
+        </a>
+
+
+        <div
+          class="game-eyebrow"
+          id="gameType">
+          MATCH
+        </div>
+
+
+        <h1 id="gameTitle">
+          --
+        </h1>
+
+
+        <p
+          class="game-date"
+          id="gameDate">
+          --
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================
+         GAME NOT FOUND
+         ======================================= -->
+
+    <section
+      class="section"
+      id="gameNotFound"
+      hidden>
+
+      <div class="empty-state">
+
+        <div class="eyebrow">
+          ERROR
+        </div>
+
+        <h2 data-i18n="game.notFound">
+          試合が見つかりません
+        </h2>
+
+        <p data-i18n="game.notFoundDescription">
+          指定された試合情報は存在しません。
+        </p>
+
+        <a
+          href="index.html#matches"
+          class="detail-back-button"
+          data-i18n="game.backToMatches">
+          試合一覧へ戻る
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================
+         GAME CONTENT
+         ======================================= -->
+
+    <div id="gameContent">
+
+
+      <!-- =====================================
+           FINAL SCORE
+           ===================================== -->
+
+      <section class="section game-score-section">
+
+        <div class="section-header">
+
+          <div>
+
+            <div
+              class="eyebrow"
+              data-i18n="game.scoreboardEyebrow">
+              FINAL SCORE
+            </div>
+
+            <h2 data-i18n="game.scoreboard">
+              スコアボード
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="scoreboard-card">
+
+          <div class="scoreboard-table-wrapper">
+
+            <table class="scoreboard-table">
+
+              <thead>
+
+                <tr>
+
+                  <th class="team-column">
+                    TEAM
+                  </th>
+
+                  <th id="inningHeaders">
+                    --
+                  </th>
+
+                  <th class="score-r">
+                    R
+                  </th>
+
+                </tr>
+
+              </thead>
+
+
+              <tbody>
+
+                <tr id="awayScoreRow">
+
+                  <th
+                    class="score-team"
+                    id="awayTeamName">
+                    --
+                  </th>
+
+                  <td
+                    id="awayInnings"
+                    class="inning-scores">
+                    --
+                  </td>
+
+                  <td
+                    class="total-score"
+                    id="awayScore">
+                    -
+                  </td>
+
+                </tr>
+
+
+                <tr id="homeScoreRow">
+
+                  <th
+                    class="score-team"
+                    id="homeTeamName">
+                    --
+                  </th>
+
+                  <td
+                    id="homeInnings"
+                    class="inning-scores">
+                    --
+                  </td>
+
+                  <td
+                    class="total-score"
+                    id="homeScore">
+                    -
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           PITCHING
+           ===================================== -->
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <div>
+
+            <div
+              class="eyebrow"
+              data-i18n="game.pitchingEyebrow">
+              PITCHING
+            </div>
+
+            <h2 data-i18n="game.pitching">
+              投手成績
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="pitching-grid">
+
+
+          <!-- WIN -->
+
+          <div class="pitching-card win-card">
+
+            <div
+              class="pitching-role"
+              data-i18n="game.win">
+              WIN
+            </div>
+
+            <div
+              class="pitching-player"
+              id="winningPitcher">
+              --
+            </div>
+
+          </div>
+
+
+          <!-- LOSS -->
+
+          <div class="pitching-card">
+
+            <div
+              class="pitching-role"
+              data-i18n="game.loss">
+              LOSS
+            </div>
+
+            <div
+              class="pitching-player"
+              id="losingPitcher">
+              --
+            </div>
+
+          </div>
+
+
+          <!-- SAVE -->
+
+          <div class="pitching-card">
+
+            <div
+              class="pitching-role"
+              data-i18n="game.save">
+              SAVE
+            </div>
+
+            <div
+              class="pitching-player"
+              id="savePitcher">
+              --
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- HOLDS -->
+
+        <div class="holds-panel">
+
+          <div class="holds-header">
+
+            <span
+              class="eyebrow"
+              data-i18n="game.holds">
+              HOLDS
+            </span>
+
+          </div>
+
+
+          <div
+            class="holds-list"
+            id="holdsList">
+            --
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           HOME RUNS
+           ===================================== -->
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <div>
+
+            <div
+              class="eyebrow"
+              data-i18n="game.homeRunsEyebrow">
+              HOME RUNS
+            </div>
+
+            <h2 data-i18n="game.homeRuns">
+              ホームラン
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="home-runs-list"
+          id="homeRunsList">
+          --
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           GAME INFORMATION
+           ===================================== -->
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <div>
+
+            <div
+              class="eyebrow"
+              data-i18n="game.infoEyebrow">
+              GAME INFORMATION
+            </div>
+
+            <h2 data-i18n="game.info">
+              試合情報
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="game-info-grid">
+
+
+          <div class="game-info-card">
+
+            <span data-i18n="game.type">
+              試合種別
+            </span>
+
+            <strong id="gameTypeInfo">
+              --
+            </strong>
+
+          </div>
+
+
+          <div class="game-info-card">
+
+            <span data-i18n="game.round">
+              ラウンド
+            </span>
+
+            <strong id="gameRound">
+              --
+            </strong>
+
+          </div>
+
+
+          <div class="game-info-card">
+
+            <span data-i18n="game.status">
+              ステータス
+            </span>
+
+            <strong id="gameStatus">
+              --
+            </strong>
+
+          </div>
+
+
+          <div class="game-info-card">
+
+            <span data-i18n="game.time">
+              試合日時
+            </span>
+
+            <strong id="gameTime">
+              --
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           NOTES
+           ===================================== -->
+
+      <section
+        class="section"
+        id="notesSection">
+
+        <div class="section-header">
+
+          <div>
+
+            <div
+              class="eyebrow"
+              data-i18n="game.notesEyebrow">
+              MATCH NOTES
+            </div>
+
+            <h2 data-i18n="game.notes">
+              試合メモ
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="game-notes"
+          id="gameNotes">
+          --
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           BACK
+           ===================================== -->
+
+      <section class="section game-bottom-navigation">
+
+        <a
+          href="index.html#matches"
+          class="detail-back-button"
+          data-i18n="game.backToMatches">
+          ← 試合一覧へ戻る
+        </a>
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+
+        <strong>
+          ASIA HCBB
+        </strong>
+
+        <span>
+          BASEBALL ALLIANCE
+        </span>
+
+      </div>
+
+
+      <p data-i18n="footer.subtitle">
+        Community・Competition・Connection
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================
+       SCRIPTS
+       ========================================= -->
+
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+
+</body>
+
+</html>
