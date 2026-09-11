@@ -1,928 +1,374 @@
-/* ==================================================
-   ASIA HCBB BASEBALL ALLIANCE
-   GAME DETAIL PAGE
-   ================================================== */
+/* =========================================================
+   Asia HCBB Baseball Alliance
+   game.css
+   ========================================================= */
 
 
-/* ==================================================
-   GAME HERO
-   ================================================== */
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .game-hero {
-
-  position: relative;
-
-  padding:
-    80px 20px
-    70px;
-
-  border-bottom:
-    1px solid
-    rgba(255,255,255,.08);
-
+  padding: 90px 20px 70px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.035),
-      rgba(255,255,255,0)
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(0,180,255,.10),
+      transparent 55%
     );
-
 }
 
 
 .game-hero-inner {
-
-  width: min(
-    1100px,
-    calc(100% - 40px)
-  );
-
+  width: min(1100px, 100%);
   margin: 0 auto;
-
+  text-align: center;
 }
 
-
-.game-eyebrow {
-
-  margin-top: 38px;
-
-  margin-bottom: 12px;
-
-  font-size: .75rem;
-
-  font-weight: 700;
-
-  letter-spacing: .18em;
-
-  text-transform: uppercase;
-
-  opacity: .55;
-
-}
-
-
-.game-hero h1 {
-
-  margin: 0;
-
-  font-size:
-    clamp(
-      2rem,
-      5vw,
-      4rem
-    );
-
-  line-height: 1.1;
-
-}
-
-
-.game-date {
-
-  margin-top: 18px;
-
-  font-size: .95rem;
-
-  opacity: .65;
-
-}
-
-
-/* ==================================================
-   BACK LINK
-   ================================================== */
 
 .back-link {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  color: inherit;
-
+  display: inline-block;
+  margin-bottom: 40px;
+  color: rgba(255,255,255,.65);
   text-decoration: none;
-
-  font-size: .85rem;
-
-  opacity: .65;
-
-  transition:
-    opacity .2s ease,
-    transform .2s ease;
-
+  font-size: 14px;
+  transition: .2s;
 }
 
 
 .back-link:hover {
-
-  opacity: 1;
-
-  transform:
-    translateX(-3px);
-
+  color: #fff;
 }
 
 
-/* ==================================================
-   SCOREBOARD
-   ================================================== */
-
-.game-score-section {
-
-  padding-top: 70px;
-
-}
-
-
-.scoreboard-card {
-
-  overflow: hidden;
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
-  border-radius: 18px;
-
-  background:
-    rgba(255,255,255,.025);
-
-  box-shadow:
-    0 20px 60px
-    rgba(0,0,0,.18);
-
-}
-
-
-.scoreboard-table-wrapper {
-
-  width: 100%;
-
-  overflow-x: auto;
-
-}
-
-
-.scoreboard-table {
-
-  width: 100%;
-
-  min-width: 650px;
-
-  border-collapse: collapse;
-
-}
-
-
-.scoreboard-table th,
-.scoreboard-table td {
-
-  padding:
-    16px 14px;
-
-  border-bottom:
-    1px solid
-    rgba(255,255,255,.07);
-
-  text-align: center;
-
-}
-
-
-.scoreboard-table thead th {
-
-  font-size: .72rem;
-
-  letter-spacing: .12em;
-
-  opacity: .55;
-
-  font-weight: 700;
-
-}
-
-
-.scoreboard-table tbody th {
-
-  text-align: left;
-
-}
-
-
-.scoreboard-table tr:last-child th,
-.scoreboard-table tr:last-child td {
-
-  border-bottom: none;
-
-}
-
-
-.team-column {
-
-  width: 180px;
-
-  text-align: left !important;
-
-}
-
-
-.score-r {
-
-  width: 80px;
-
-}
-
-
-.score-team {
-
-  font-size: .95rem;
-
-  font-weight: 700;
-
-  white-space: nowrap;
-
-}
-
-
-.inning-scores {
-
-  padding:
-    0 !important;
-
-}
-
-
-.inning-scores-inner {
-
-  display: grid;
-
-  grid-auto-flow: column;
-
-  grid-auto-columns:
-    minmax(40px, 1fr);
-
-}
-
-
-.inning-cell {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  min-height: 56px;
-
-  border-left:
-    1px solid
-    rgba(255,255,255,.06);
-
-  font-weight: 600;
-
-}
-
-
-.total-score {
-
-  font-size: 1.25rem;
-
-  font-weight: 800;
-
-}
-
-
-/* ==================================================
-   PITCHING
-   ================================================== */
-
-.pitching-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(0, 1fr)
-    );
-
-  gap: 14px;
-
-}
-
-
-.pitching-card {
-
-  position: relative;
-
-  min-height: 140px;
-
-  padding: 22px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
-  border-radius: 16px;
-
-  background:
-    rgba(255,255,255,.025);
-
-}
-
-
-.pitching-role {
-
-  font-size: .7rem;
-
-  font-weight: 800;
-
-  letter-spacing: .16em;
-
-  opacity: .5;
-
-}
-
-
-.pitching-player {
-
-  margin-top: 25px;
-
-  font-size: 1.1rem;
-
-  font-weight: 700;
-
-  word-break: break-word;
-
-}
-
-
-.win-card {
-
-  border-color:
-    rgba(255,255,255,.2);
-
-}
-
-
-/* ==================================================
-   HOLDS
-   ================================================== */
-
-.holds-panel {
-
-  margin-top: 14px;
-
-  padding: 22px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
-  border-radius: 16px;
-
-  background:
-    rgba(255,255,255,.02);
-
-}
-
-
-.holds-header {
-
+.game-type {
+  display: inline-block;
   margin-bottom: 16px;
-
-}
-
-
-.holds-list {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 10px;
-
-}
-
-
-.hold-player {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  min-height: 38px;
-
-  padding:
-    7px 13px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
+  padding: 7px 14px;
+  border: 1px solid rgba(0,190,255,.35);
   border-radius: 999px;
-
-  background:
-    rgba(255,255,255,.035);
-
-  font-size: .85rem;
-
+  color: #55d8ff;
+  font-size: 12px;
+  letter-spacing: .16em;
 }
 
 
-.holds-empty {
-
-  opacity: .45;
-
-  font-size: .85rem;
-
+.game-date {
+  margin-top: 14px;
+  color: rgba(255,255,255,.58);
+  font-size: 14px;
 }
 
 
-/* ==================================================
-   HOME RUNS
-   ================================================== */
-
-.home-runs-list {
-
+.final-score {
   display: grid;
-
-  gap: 10px;
-
-}
-
-
-.home-run-card {
-
-  display: grid;
-
-  grid-template-columns:
-    90px
-    1fr
-    auto;
-
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-
-  gap: 20px;
-
-  padding:
-    18px 20px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
-  border-radius: 14px;
-
-  background:
-    rgba(255,255,255,.025);
-
+  gap: 35px;
+  margin: 45px auto 25px;
+  max-width: 850px;
 }
 
 
-.home-run-team {
-
-  font-size: .7rem;
-
-  font-weight: 800;
-
-  letter-spacing: .12em;
-
-  text-transform: uppercase;
-
-  opacity: .55;
-
-}
-
-
-.home-run-player {
-
-  font-size: 1rem;
-
+.final-team {
+  font-size: clamp(20px, 4vw, 34px);
   font-weight: 700;
-
 }
 
 
-.home-run-detail {
-
-  text-align: right;
-
-  font-size: .82rem;
-
-  opacity: .65;
-
+.final-score-number {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: clamp(28px, 6vw, 55px);
+  line-height: 1;
 }
 
 
-.home-run-empty {
-
-  padding: 24px;
-
-  border:
-    1px dashed
-    rgba(255,255,255,.12);
-
-  border-radius: 14px;
-
-  text-align: center;
-
-  opacity: .5;
-
+.final-score-number strong {
+  min-width: 60px;
 }
 
 
-/* ==================================================
-   GAME INFORMATION
-   ================================================== */
-
-.game-info-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(0, 1fr)
-    );
-
-  gap: 14px;
-
+.final-score-number span {
+  color: rgba(255,255,255,.35);
 }
 
 
-.game-info-card {
-
-  min-height: 110px;
-
-  padding: 20px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
-  border-radius: 14px;
-
-  background:
-    rgba(255,255,255,.025);
-
-}
-
-
-.game-info-card span {
-
-  display: block;
-
-  margin-bottom: 18px;
-
-  font-size: .7rem;
-
+.game-status-label {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 7px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.7);
+  font-size: 12px;
   letter-spacing: .12em;
-
-  opacity: .5;
-
 }
 
 
-.game-info-card strong {
 
-  display: block;
+/* =========================================================
+   SCOREBOARD
+   ========================================================= */
 
-  font-size: .95rem;
-
-  line-height: 1.5;
-
-}
-
-
-/* ==================================================
-   NOTES
-   ================================================== */
-
-.game-notes {
-
-  padding: 24px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
+.scoreboard-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(255,255,255,.09);
   border-radius: 16px;
-
-  background:
-    rgba(255,255,255,.025);
-
-  line-height: 1.9;
-
-  white-space: pre-wrap;
-
+  background: rgba(255,255,255,.025);
 }
 
 
-/* ==================================================
-   BOTTOM NAVIGATION
-   ================================================== */
-
-.game-bottom-navigation {
-
-  padding-top: 0;
-
+.scoreboard {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
 }
 
 
-.detail-back-button {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  min-height: 44px;
-
-  padding:
-    0 20px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  border-radius: 10px;
-
-  color: inherit;
-
-  text-decoration: none;
-
-  background:
-    rgba(255,255,255,.035);
-
-  font-size: .85rem;
-
-  font-weight: 700;
-
-  transition:
-    background .2s ease,
-    border-color .2s ease,
-    transform .2s ease;
-
-}
-
-
-.detail-back-button:hover {
-
-  background:
-    rgba(255,255,255,.08);
-
-  border-color:
-    rgba(255,255,255,.22);
-
-  transform:
-    translateY(-2px);
-
-}
-
-
-/* ==================================================
-   EMPTY STATE
-   ================================================== */
-
-.empty-state {
-
-  max-width: 650px;
-
-  margin: 0 auto;
-
-  padding:
-    70px 20px;
-
+.scoreboard th,
+.scoreboard td {
+  padding: 16px 13px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
   text-align: center;
-
+  white-space: nowrap;
 }
 
 
-.empty-state h2 {
-
-  margin-top: 10px;
-
+.scoreboard thead th {
+  color: rgba(255,255,255,.5);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 
-.empty-state p {
-
-  margin:
-    15px 0 25px;
-
-  opacity: .6;
-
+.scoreboard tbody th {
+  min-width: 150px;
+  text-align: left;
+  color: #fff;
+  font-weight: 700;
 }
 
 
-/* ==================================================
-   FOOTER
-   ================================================== */
-
-.site-footer {
-
-  margin-top: 80px;
-
-  border-top:
-    1px solid
-    rgba(255,255,255,.08);
-
+.scoreboard td {
+  color: rgba(255,255,255,.78);
 }
 
 
-.footer-inner {
+.scoreboard .total {
+  border-left: 1px solid rgba(255,255,255,.12);
+  color: #fff;
+  font-weight: 800;
+}
 
-  width: min(
-    1100px,
-    calc(100% - 40px)
-  );
 
-  margin: 0 auto;
 
-  padding:
-    35px 0;
+/* =========================================================
+   DETAILS
+   ========================================================= */
 
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+
+.detail-card {
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  background: rgba(255,255,255,.025);
+}
+
+
+.detail-card h2 {
+  margin: 8px 0 25px;
+}
+
+
+.result-list {
   display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 20px;
-
-}
-
-
-.footer-brand {
-
-  display: flex;
-
   flex-direction: column;
-
-  gap: 3px;
-
+  gap: 10px;
 }
 
 
-.footer-brand strong {
-
-  font-size: .95rem;
-
-  letter-spacing: .08em;
-
+.result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  background: rgba(0,0,0,.15);
 }
 
 
-.footer-brand span {
-
-  font-size: .65rem;
-
-  letter-spacing: .14em;
-
-  opacity: .45;
-
+.result-label {
+  color: rgba(255,255,255,.5);
+  font-size: 12px;
 }
 
 
-.footer-inner p {
+.result-value {
+  color: #fff;
+  font-weight: 700;
+  text-align: right;
+}
 
+
+.result-subtitle {
+  margin-top: 5px;
+  color: rgba(255,255,255,.42);
+  font-size: 12px;
+}
+
+
+.empty-result {
+  padding: 20px;
+  color: rgba(255,255,255,.4);
+  text-align: center;
+}
+
+
+
+/* =========================================================
+   HOME RUN
+   ========================================================= */
+
+.hr-row {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+
+.hr-team {
+  color: #55d8ff;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+
+.hr-player {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+.hr-info {
+  color: rgba(255,255,255,.5);
+  font-size: 12px;
+}
+
+
+
+/* =========================================================
+   NOTES
+   ========================================================= */
+
+#gameNotes {
   margin: 0;
-
-  font-size: .75rem;
-
-  opacity: .45;
-
+  color: rgba(255,255,255,.65);
+  line-height: 1.9;
 }
 
 
-/* ==================================================
-   RESPONSIVE
-   ================================================== */
 
-@media (max-width: 900px) {
+/* =========================================================
+   ERROR
+   ========================================================= */
 
-  .pitching-grid {
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-
-  .game-info-grid {
-
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(0, 1fr)
-      );
-
-  }
-
+.game-error {
+  text-align: center;
 }
 
 
-@media (max-width: 650px) {
+.game-error .detail-card {
+  padding: 60px 30px;
+}
+
+
+.game-error p {
+  color: rgba(255,255,255,.5);
+  margin: 15px 0 30px;
+}
+
+
+.primary-button {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255,255,255,.05);
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
 
   .game-hero {
-
-    padding:
-      55px 20px;
-
+    padding-top: 60px;
   }
 
 
-  .game-hero-inner {
-
-    width:
-      calc(100% - 10px);
-
+  .final-score {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
 
-  .game-hero h1 {
-
-    font-size:
-      2rem;
-
+  .final-team {
+    font-size: 22px;
   }
 
 
-  .game-score-section {
-
-    padding-top:
-      45px;
-
+  .final-score-number {
+    justify-content: center;
   }
 
 
-  .home-run-card {
-
-    grid-template-columns:
-      1fr;
-
-    gap: 8px;
-
+  .detail-grid {
+    grid-template-columns: 1fr;
   }
 
 
-  .home-run-detail {
-
-    text-align:
-      left;
-
-  }
-
-
-  .game-info-grid {
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-
-  .footer-inner {
-
-    flex-direction:
-      column;
-
-    align-items:
-      flex-start;
-
+  .detail-card {
+    padding: 22px;
   }
 
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 
-  .scoreboard-table {
-
-    min-width:
-      600px;
-
+  .game-hero {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
 
-  .scoreboard-table th,
-  .scoreboard-table td {
-
-    padding:
-      13px 10px;
-
+  .scoreboard th,
+  .scoreboard td {
+    padding: 12px 9px;
   }
 
 
-  .team-column {
-
-    width:
-      140px;
-
+  .result-row {
+    padding: 15px;
   }
 
 }
