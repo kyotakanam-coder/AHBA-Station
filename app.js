@@ -9,7 +9,7 @@ const $$ = selector => document.querySelectorAll(selector);
 
 const translations = {
   ja: {
-    nav: { games: "試合", standings: "順位表", schedule: "時間表", leagues: "リーグ", admin: "管理" },
+    nav: { games: "試合", standings: "順位表", schedule: "時間表", leagues: "リーグ", about: "AHBA紹介", admin: "管理" },
     hero: {
       title: "アジアのHCBBを、<br><span>ひとつのスコアボードへ。</span>",
       description: "試合結果、順位、各リーグの試合時間をひとつのサイトで確認できる Asia HCBB Baseball Alliance 公式ポータル。",
@@ -36,7 +36,7 @@ const translations = {
   },
 
   ko: {
-    nav: { games: "경기", standings: "순위표", schedule: "일정", leagues: "리그", admin: "관리" },
+    nav: { games: "경기", standings: "순위표", schedule: "일정", leagues: "리그", about: "AHBA 소개", admin: "관리" },
     hero: {
       title: "아시아 HCBB를,<br><span>하나의 스코어보드로.</span>",
       description: "경기 결과, 순위, 각 리그의 경기 일정을 한 곳에서 확인할 수 있는 Asia HCBB Baseball Alliance 공식 포털입니다.",
@@ -63,7 +63,7 @@ const translations = {
   },
 
   en: {
-    nav: { games: "Games", standings: "Standings", schedule: "Schedule", leagues: "Leagues", admin: "Admin" },
+    nav: { games: "Games", standings: "Standings", schedule: "Schedule", leagues: "Leagues", about: "ABOUT AHBA", admin: "Admin" },
     hero: {
       title: "Asia's HCBB,<br><span>one scoreboard.</span>",
       description: "The official Asia HCBB Baseball Alliance portal for game results, standings and league schedules.",
@@ -90,7 +90,7 @@ const translations = {
   },
 
   zh: {
-    nav: { games: "比赛", standings: "排名", schedule: "赛程", leagues: "联赛", admin: "管理" },
+    nav: { games: "比赛", standings: "排名", schedule: "赛程", leagues: "联赛", about: "关于 AHBA", admin: "管理" },
     hero: {
       title: "亚洲 HCBB，<br><span>汇聚于一个记分板。</span>",
       description: "Asia HCBB Baseball Alliance 官方门户，提供比赛结果、排名和各联赛赛程。",
