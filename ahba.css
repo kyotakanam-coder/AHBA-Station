@@ -1,0 +1,526 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #080a0f;
+  color: #f3f5f7;
+  font-family: Arial, "Noto Sans JP", sans-serif;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* HEADER */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8, 10, 15, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: auto;
+  min-height: 76px;
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  min-width: 230px;
+}
+
+.brand-main {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.brand-sub {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  opacity: 0.55;
+}
+
+.main-nav {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+}
+
+.main-nav a {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  opacity: 0.55;
+  transition: 0.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  opacity: 1;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 5px;
+}
+
+.language-switcher button {
+  border: 1px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: white;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.language-switcher button.active {
+  background: white;
+  color: #080a0f;
+}
+
+
+/* HERO */
+
+.about-hero {
+  min-height: 600px;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    radial-gradient(circle at 75% 40%, rgba(80,110,180,0.15), transparent 35%),
+    linear-gradient(135deg, #080a0f, #10141c);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.hero-content {
+  width: min(1100px, calc(100% - 50px));
+  margin: auto;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  opacity: 0.55;
+}
+
+.about-hero h1 {
+  margin: 25px 0;
+
+  font-size: clamp(45px, 7vw, 90px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.hero-description {
+  max-width: 650px;
+  color: #aeb5c0;
+  font-size: 15px;
+}
+
+
+/* SECTIONS */
+
+.about-section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 110px 25px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 50px;
+}
+
+.section-heading span {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  opacity: 0.4;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+}
+
+.section-description {
+  max-width: 700px;
+  color: #9da5b1;
+}
+
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 80px;
+}
+
+.about-text {
+  color: #aeb5c0;
+}
+
+.about-text p {
+  margin: 0 0 25px;
+}
+
+.about-highlight {
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 40px;
+  background: rgba(255,255,255,0.025);
+}
+
+.highlight-number {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.highlight-title {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+
+.highlight-line {
+  width: 60px;
+  height: 1px;
+  background: rgba(255,255,255,0.5);
+  margin: 25px 0;
+}
+
+.about-highlight p {
+  color: #8f98a5;
+  font-size: 12px;
+}
+
+
+/* ACTIVITIES */
+
+.activities-section {
+  max-width: 1280px;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.activity-card {
+  min-height: 270px;
+  padding: 28px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.025);
+
+  transition: 0.25s;
+}
+
+.activity-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.activity-number {
+  font-size: 11px;
+  opacity: 0.4;
+  letter-spacing: 0.2em;
+}
+
+.activity-card h3 {
+  margin-top: 55px;
+  font-size: 18px;
+}
+
+.activity-card p {
+  color: #929aa6;
+  font-size: 13px;
+}
+
+
+/* REGIONS */
+
+.region-grid {
+  margin-top: 40px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.region-card {
+  padding: 30px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.region-card span {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  opacity: 0.4;
+}
+
+.region-card strong {
+  font-size: 18px;
+}
+
+
+/* DISCORD */
+
+.discord-section {
+  margin: 0;
+  padding: 100px 25px;
+
+  background:
+    linear-gradient(135deg, #111722, #080a0f);
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.discord-inner {
+  max-width: 1100px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.discord-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  opacity: 0.45;
+}
+
+.discord-content h2 {
+  font-size: 45px;
+  margin: 15px 0;
+}
+
+.discord-content > p {
+  max-width: 620px;
+  color: #9da5b1;
+}
+
+.discord-code {
+  margin: 30px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.discord-code span {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  opacity: 0.4;
+}
+
+.discord-code strong {
+  font-size: 20px;
+  letter-spacing: 0.12em;
+}
+
+.discord-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+
+  padding: 15px 24px;
+
+  border: 1px solid rgba(255,255,255,0.35);
+  background: white;
+  color: #080a0f;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+
+  transition: 0.2s;
+}
+
+.discord-button:hover {
+  background: transparent;
+  color: white;
+}
+
+.arrow {
+  font-size: 17px;
+}
+
+.discord-mark {
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.discord-logo {
+  font-size: 70px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.discord-label {
+  text-align: center;
+  font-size: 9px;
+  line-height: 1.8;
+  letter-spacing: 0.2em;
+  opacity: 0.4;
+}
+
+
+/* PRINCIPLES */
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.principle {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 25px;
+}
+
+.principle > span {
+  font-size: 10px;
+  opacity: 0.4;
+}
+
+.principle h3 {
+  font-size: 24px;
+}
+
+.principle p {
+  color: #929aa6;
+  font-size: 13px;
+}
+
+
+/* FOOTER */
+
+.site-footer {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 35px 25px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-inner strong {
+  display: block;
+}
+
+.footer-inner span {
+  font-size: 9px;
+  opacity: 0.4;
+  letter-spacing: 0.1em;
+}
+
+.footer-inner p {
+  font-size: 9px;
+  opacity: 0.4;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .header-inner {
+    flex-wrap: wrap;
+    padding: 15px 20px;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    margin-left: 0;
+    padding-bottom: 5px;
+  }
+
+  .about-grid,
+  .discord-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-grid,
+  .region-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .discord-mark {
+    min-height: 220px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .activity-grid,
+  .region-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero {
+    min-height: 520px;
+  }
+
+  .discord-content h2 {
+    font-size: 34px;
+  }
+}
