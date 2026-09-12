@@ -11,78 +11,335 @@ const ALLIANCE_DATA = {
 
   leagues: [
 
-    {
-      id: "KBO",
-      name: {
-        ja: "KBO",
-        ko: "KBO",
-        en: "KBO",
-        zh: "KBO"
-      },
-      country: {
-        ja: "韓国",
-        ko: "대한민국",
-        en: "South Korea",
-        zh: "韩国"
-      },
-      description: {
-        ja: "The KBO League is Korea’s largest and premier league.",
-        ko: "The KBO League is Korea’s largest and premier league.",
-        en: "The KBO League is Korea’s largest and premier league.",
-        zh: "The KBO League is Korea’s largest and premier league."
-      },
-      owner: "nicemanman_1"
+  /* =====================================================
+     A LEAGUE
+     ===================================================== */
+
+  {
+    id: "A",
+
+    name: {
+      ja: "A LEAGUE",
+      ko: "A LEAGUE",
+      en: "A LEAGUE",
+      zh: "A LEAGUE"
     },
 
-    {
-      id: "KFB",
-      name: {
-        ja: "KFB",
-        ko: "KFB",
-        en: "KFB",
-        zh: "KFB"
-      },
-      country: {
-        ja: "韓国",
-        ko: "대한민국",
-        en: "South Korea",
-        zh: "韩国"
-      },
-      description: {
-        ja: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues.",
-        ko: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues.",
-        en: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues.",
-        zh: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues."
-      },
-      owner: "nicemanman_1"
+    country: {
+      ja: "日本",
+      ko: "일본",
+      en: "Japan",
+      zh: "日本"
     },
 
-    {
-      id: "KOREA",
-      name: {
-        ja: "KOREA LEAGUE",
-        ko: "KOREA LEAGUE",
-        en: "KOREA LEAGUE",
-        zh: "KOREA LEAGUE"
+    /* 地域 */
+    region: {
+      ja: "日本",
+      ko: "일본",
+      en: "Japan",
+      zh: "日本"
+    },
+
+    /* 試合時間 */
+    matchTime: {
+      ja: "毎週土曜日 20:00",
+      ko: "매주 토요일 20:00",
+      en: "Every Saturday 20:00",
+      zh: "每周六 20:00"
+    },
+
+    /* タイムゾーン */
+    timezone: "Asia/Tokyo",
+
+    description: {
+      ja: "日本を中心としたHCBBリーグ。",
+      ko: "일본을 중심으로 운영되는 HCBB 리그.",
+      en: "An HCBB league based primarily in Japan.",
+      zh: "以日本为中心运营的HCBB联赛。"
+    },
+
+    owner: "AHBA",
+
+    /* ===================================================
+       参加チーム
+       ここにチームを追加・削除する
+       =================================================== */
+
+    teams: [
+
+      {
+        id: "A1",
+        name: "A1",
+        country: {
+          ja: "日本",
+          ko: "일본",
+          en: "Japan",
+          zh: "日本"
+        }
       },
-      country: {
-        ja: "韓国",
-        ko: "대한민국",
-        en: "South Korea",
-        zh: "韩国"
+
+      {
+        id: "A2",
+        name: "A2",
+        country: {
+          ja: "日本",
+          ko: "일본",
+          en: "Japan",
+          zh: "日本"
+        }
       },
-      description: {
-        ja: "韓国を中心としたHCBBリーグ。",
-        ko: "대한민국을 중심으로 운영되는 HCBB 리그.",
-        en: "An HCBB league based primarily in South Korea.",
-        zh: "以韩国为中心运营的HCBB联赛。"
+
+      {
+        id: "A3",
+        name: "A3",
+        country: {
+          ja: "日本",
+          ko: "일본",
+          en: "Japan",
+          zh: "日本"
+        }
       },
-      owner: "AHBA"
+
+      {
+        id: "A4",
+        name: "A4",
+        country: {
+          ja: "日本",
+          ko: "일본",
+          en: "Japan",
+          zh: "日本"
+        }
+      }
+
+    ],
+
+    /* ===================================================
+       Discord
+       =================================================== */
+
+    discord: {
+
+      url: "https://discord.gg/REPLACE_A_LEAGUE",
+
+      code: "A-LEAGUE"
+
     }
 
-  ],
+  },
 
 
+  /* =====================================================
+     B LEAGUE
+     ===================================================== */
+
+  {
+    id: "B",
+
+    name: {
+      ja: "B LEAGUE",
+      ko: "B LEAGUE",
+      en: "B LEAGUE",
+      zh: "B LEAGUE"
+    },
+
+    country: {
+      ja: "日本",
+      ko: "일본",
+      en: "Japan",
+      zh: "日本"
+    },
+
+    region: {
+      ja: "日本",
+      ko: "일본",
+      en: "Japan",
+      zh: "日本"
+    },
+
+    matchTime: {
+      ja: "毎週日曜日 20:00",
+      ko: "매주 일요일 20:00",
+      en: "Every Sunday 20:00",
+      zh: "每周日 20:00"
+    },
+
+    timezone: "Asia/Tokyo",
+
+    description: {
+      ja: "次世代のHCBBチームが参加するリーグ。",
+      ko: "차세대 HCBB 팀들이 참가하는 리그.",
+      en: "A league featuring next-generation HCBB teams.",
+      zh: "由新一代HCBB球队参加的联赛。"
+    },
+
+    owner: "AHBA",
+
+    teams: [
+
+      {
+        id: "B1",
+        name: "B1",
+        country: {
+          ja: "日本",
+          ko: "일본",
+          en: "Japan",
+          zh: "日本"
+        }
+      },
+
+      {
+        id: "B2",
+        name: "B2",
+        country: {
+          ja: "日本",
+          ko: "일본",
+          en: "Japan",
+          zh: "日本"
+        }
+      },
+
+      {
+        id: "B3",
+        name: "B3",
+        country: {
+          ja: "日本",
+          ko: "일본",
+          en: "Japan",
+          zh: "日本"
+        }
+      },
+
+      {
+        id: "B4",
+        name: "B4",
+        country: {
+          ja: "日本",
+          ko: "일본",
+          en: "Japan",
+          zh: "日本"
+        }
+      }
+
+    ],
+
+    discord: {
+
+      url: "https://discord.gg/REPLACE_B_LEAGUE",
+
+      code: "B-LEAGUE"
+
+    }
+
+  },
+
+
+  /* =====================================================
+     KOREA LEAGUE
+     ===================================================== */
+
+  {
+    id: "KOREA",
+
+    name: {
+      ja: "KOREA LEAGUE",
+      ko: "KOREA LEAGUE",
+      en: "KOREA LEAGUE",
+      zh: "KOREA LEAGUE"
+    },
+
+    country: {
+      ja: "韓国",
+      ko: "대한민국",
+      en: "South Korea",
+      zh: "韩国"
+    },
+
+    region: {
+      ja: "韓国",
+      ko: "대한민국",
+      en: "South Korea",
+      zh: "韩国"
+    },
+
+    matchTime: {
+      ja: "毎週土曜日 21:00",
+      ko: "매주 토요일 21:00",
+      en: "Every Saturday 21:00",
+      zh: "每周六 21:00"
+    },
+
+    timezone: "Asia/Seoul",
+
+    description: {
+      ja: "韓国を中心としたHCBBリーグ。",
+      ko: "대한민국을 중심으로 운영되는 HCBB 리그.",
+      en: "An HCBB league based primarily in South Korea.",
+      zh: "以韩国为中心运营的HCBB联赛。"
+    },
+
+    owner: "AHBA",
+
+    teams: [
+
+      {
+        id: "K1",
+        name: "K1",
+        country: {
+          ja: "韓国",
+          ko: "대한민국",
+          en: "South Korea",
+          zh: "韩国"
+        }
+      },
+
+      {
+        id: "K2",
+        name: "K2",
+        country: {
+          ja: "韓国",
+          ko: "대한민국",
+          en: "South Korea",
+          zh: "韩国"
+        }
+      },
+
+      {
+        id: "K3",
+        name: "K3",
+        country: {
+          ja: "韓国",
+          ko: "대한민국",
+          en: "South Korea",
+          zh: "韩国"
+        }
+      },
+
+      {
+        id: "K4",
+        name: "K4",
+        country: {
+          ja: "韓国",
+          ko: "대한민국",
+          en: "South Korea",
+          zh: "韩国"
+        }
+      }
+
+    ],
+
+    discord: {
+
+      url: "https://discord.gg/REPLACE_KOREA_LEAGUE",
+
+      code: "KOREA-LEAGUE"
+
+    }
+
+  }
+
+],
+
+   
   /* =========================================================
      OFFICIAL AHBA GAMES
      ========================================================= */
