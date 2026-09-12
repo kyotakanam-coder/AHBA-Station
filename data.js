@@ -26,35 +26,35 @@ const ALLIANCE_DATA = {
         zh: "韩国"
       },
       description: {
-        ja: "日本を中心としたHCBBリーグ。",
-        ko: "일본을 중심으로 운영되는 HCBB 리그.",
-        en: "An HCBB league based primarily in Japan.",
-        zh: "以日本为中心运营的HCBB联赛。"
+        ja: "The KBO League is Korea’s largest and premier league.",
+        ko: "The KBO League is Korea’s largest and premier league.",
+        en: "The KBO League is Korea’s largest and premier league.",
+        zh: "The KBO League is Korea’s largest and premier league."
       },
-      owner: "AHBA"
+      owner: "nicemanman_1"
     },
 
     {
-      id: "B",
+      id: "KFB",
       name: {
-        ja: "B LEAGUE",
-        ko: "B LEAGUE",
-        en: "B LEAGUE",
-        zh: "B LEAGUE"
+        ja: "KFB",
+        ko: "KFB",
+        en: "KFB",
+        zh: "KFB"
       },
       country: {
-        ja: "日本",
-        ko: "일본",
-        en: "Japan",
-        zh: "日本"
+        ja: "韓国",
+        ko: "대한민국",
+        en: "South Korea",
+        zh: "韩国"
       },
       description: {
-        ja: "次世代のHCBBチームが参加するリーグ。",
-        ko: "차세대 HCBB 팀들이 참가하는 리그.",
-        en: "A league featuring next-generation HCBB teams.",
-        zh: "由新一代HCBB球队参加的联赛。"
+        ja: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues.",
+        ko: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues.",
+        en: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues.",
+        zh: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues."
       },
-      owner: "AHBA"
+      owner: "nicemanman_1"
     },
 
     {
